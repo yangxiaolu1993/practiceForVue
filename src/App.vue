@@ -13,6 +13,9 @@ export default {
 }
 </script>
 
+<style lang="scss">
+@import './assets/css/reset.scss';
+</style>
 <style>
 html,body{
   height: 100%;
@@ -24,11 +27,14 @@ html,body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body,html{
+  padding: 0;
+  margin: 0;
+}
 .wrapper{
   width: 100%;
   height: 100%;
   margin:auto;
-  padding: 10px;
   box-sizing:border-box;
   /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
 }

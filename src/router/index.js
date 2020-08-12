@@ -8,6 +8,7 @@ import Algorithm from '@/view/algorithm/algorithm.vue'
 import Position from '@/view/position/index.vue'
 import H5 from '@/view/position/h5.vue'
 import GaoDe from '@/view/position/gaode.vue'
+import HashRouter from '@/view/myRouter/hashRouter.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,7 @@ const router = new Router({
         meta:{title:'高德 位置信息'}
       }]
     },  // 位置信息
+    {path: '/hashRouter',name: 'hashRouter',component: HashRouter,meta:{title:'hash 路由'}},  // 手写路由 hash
   ]
 })
 
