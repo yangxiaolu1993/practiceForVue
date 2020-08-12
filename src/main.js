@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import myRouter from './components/myRouter'
 
 Vue.config.productionTip = false
 
+Vue.use(myRouter)
 
 import "./util/rem"
 

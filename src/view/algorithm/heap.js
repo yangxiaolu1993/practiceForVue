@@ -158,5 +158,5 @@ class MinHeap {
     }
   }
 
-  console.log(typeof Heap)
+  
   export default Heap

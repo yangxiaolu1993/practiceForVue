@@ -10,6 +10,7 @@
             </div>  
         </div>
     </div>
+
   </div>
 </template>
 
@@ -26,6 +27,9 @@ export default {
         {id:'5',title:'排列组合',desc:'排列组合，数组',route:'algorithm',icon:'6.jpg'}
       ]
     }
+  },
+  mounted(){
+    console.log(this.$myMethod())
   },
   methods:{
 

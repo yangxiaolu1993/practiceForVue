@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/home'
-import Rgba from '@/components/regular'
-import Canvas from '@/components/canvas'
-import Algorithm from '@/components/algorithm/algorithm.vue'
-import Position from '@/components/position/index.vue'
-import H5 from '@/components/position/h5.vue'
-import GaoDe from '@/components/position/gaode.vue'
+import Home from '@/view/home'
+import Rgba from '@/view/regular'
+import Canvas from '@/view/canvas'
+import Algorithm from '@/view/algorithm/algorithm.vue'
+import Position from '@/view/position/index.vue'
+import H5 from '@/view/position/h5.vue'
+import GaoDe from '@/view/position/gaode.vue'
 
 Vue.use(Router)
 
