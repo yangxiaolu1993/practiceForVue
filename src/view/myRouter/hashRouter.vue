@@ -1,6 +1,6 @@
 <template>
   <div class="hash-router">
-      <router-link to="/foo">Go to Foo</router-link>
+      
     <my-router-view></my-router-view>
     <div class="footer">
         <my-router-link to="home">首页</my-router-link>
@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted(){
-   
+   console.log(this.$router)
   },
   methods:{
 

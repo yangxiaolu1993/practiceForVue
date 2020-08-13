@@ -3,17 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import myRouter from './components/myRouter'
-
+import myRouter from './router/myIndex'
 Vue.config.productionTip = false
-
-Vue.use(myRouter)
 
 import "./util/rem"
 
 new Vue({
   el: '#app',
   router,
+  myRouter,
   components: { App },
   template: '<App/>'
 })
