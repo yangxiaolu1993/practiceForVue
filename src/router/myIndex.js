@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import myRouter from '../components/myRouter'
+import myRouter from '../plugins/myRouter'
 
 import Home from '../view/myRouter/view/home'
 import Cart from '../view/myRouter/view/cart'

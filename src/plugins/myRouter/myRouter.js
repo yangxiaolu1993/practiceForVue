@@ -17,15 +17,14 @@ class MyRouter {
         // hash值改变
         window.addEventListener('hashchange', ()=>{
             this.current = location.hash.slice(1)
-
-            console.log('地址改变',this.current)
         })
 
         // 路由 初始化
         window.addEventListener('DOMContentLoaded', ()=>{
+            console.log('初始路由')
             //如果不存在hash值，那么重定向到#/
             if(!location.hash){
-                this.current = "/"
+                this.current = "#/"
             }else{
                 //如果存在hash值，那就渲染对应UI
                 this.current = location.hash.slice(1)

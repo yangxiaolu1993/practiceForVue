@@ -1,11 +1,7 @@
 
 import MyRouter from './myRouter'
-import MyRouterView from './routerView'
-import MyRouterLink from './routerLink'
 
 MyRouter.install = function(Vue,options){
-
-    
 
     Vue.mixin({
         beforeCreate(){
@@ -28,7 +24,7 @@ MyRouter.install = function(Vue,options){
 
     Vue.component("MyRouterView",{
         render(h){
-            console.log(this._self._myRouter)
+          
             let currentRoute = this._self._myRouter.current
             let routesMap = this._self._myRouter.routesMap
             return h(routesMap[currentRoute])
