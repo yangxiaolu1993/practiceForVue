@@ -1,27 +1,40 @@
 
 import MyRouter from './myRouter'
+import MyRouterLink from './routerLink'
+import MyRouterLinkT from './routerView/routerLink.vue'
 
 MyRouter.install = function(Vue,options){
 
     Vue.mixin({
         beforeCreate(){
-            
-            if (this.$options && this.$options.myRouter){ // 如果是根组件
-                // this._root = this; //把当前实例挂载到_root上
+            // console.log('全局混入 beforeCreate')
+            if (this.$options && this.$options.myRouter){ 
+                // 如果是根组件
                 this._myRouter = this.$options.myRouter;
-            }else { //如果是子组件
+            }else { 
+                //如果是子组件
                 this._myRouter= this.$parent && this.$parent._myRouter
             }
             
+            // 利用 Vue defineReactive 监听当前路由的变化
             Vue.util.defineReactive(this._myRouter,'current')
-            // Object.defineProperty(this,'$router',{
-            //     get(){
-            //         return this._root._router
-            //     }
-            // })
+            
+            // 为当前实例添加 $route 属性
+            Object.defineProperty(this,'$myRoute',{
+                get(){
+                    
+                    let current = this._myRouter.current
+                    let currentRouter = this._myRouter.routes.filter(item=>{ 
+                        return item.path == current
+                    })
+                   
+                    return currentRouter[0]
+                }
+            })
         }
     })
 
+    // 自定义组件 - <my-router-view>
     Vue.component("MyRouterView",{
         render(h){
           
@@ -30,22 +43,23 @@ MyRouter.install = function(Vue,options){
             return h(routesMap[currentRoute])
         }
     })
+    // 自定义组件 - <my-router-link>
+    Vue.component(MyRouterLink.name, MyRouterLink)
 
-    Vue.component('MyRouterLink',{
-        props: {
-            to: {
-              type: String,
-              required: true
-            }
-        },
-        render(h){
-            return h('a',{
-                attrs: {
-                    href: `#/${this.to}`
-                }
-            },this.$slots.default)
-        }
-    })
+    // template 形式
+    // Vue.component(MyRouterLink.name, {
+    //     functional: true,
+    //     attrs: {
+    //         to: {
+    //             type: String,
+    //             required: true
+    //         }
+    //     },
+    //     render(createElement, { data, children }) {
+    //         data.attrs.to = `#/${data.attrs.to}`
+    //         return createElement( MyRouterLinkT, data, children );
+    //     }
+    // })
 }
 
 export default MyRouter

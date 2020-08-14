@@ -19,8 +19,11 @@ export default {
       
     }
   },
+  beforeCreate(){
+    console.log('hash router  beforeCreate')
+  },
   mounted(){
-   console.log(this.$router)
+   console.log(this.$myRoute)
   },
   methods:{
 

@@ -21,7 +21,7 @@ class MyRouter {
 
         // 路由 初始化
         window.addEventListener('DOMContentLoaded', ()=>{
-            console.log('初始路由')
+            
             //如果不存在hash值，那么重定向到#/
             if(!location.hash){
                 this.current = "#/"

@@ -2,12 +2,16 @@ export default {
     name: 'MyRouterLink',
     functional: true,
     props: {
-        render: Function,
-        to:String
+        to: {
+            type: String,
+            required: true
+        }
     },
-    render: (h, ctx) => {
-        
-        return ctx.props.render(h, params);
+    render: (createElement, context) => {
+        return createElement('a',{
+            attrs: {
+                href: `#/${context.props.to}`
+            }
+        },context.children)
     }
-    
 };

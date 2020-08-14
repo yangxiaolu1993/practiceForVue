@@ -1,28 +1,3 @@
-<template>
-  <div class="router-link">
-    <slot></slot> 
-  </div>
+<template functional>
+  <a v-bind="data.attrs"><slot/></a>
 </template>
-
-<script>
-export default {
-  name: 'MyRouterLink',
-  data () {
-    return {
-      
-    }
-  },
-  mounted(){
-   
-  },
-  methods:{
-
-   
-  }
-}
-</script>
-
-
-<style lang="scss" scoped>
-</style>
-
