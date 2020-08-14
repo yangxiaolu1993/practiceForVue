@@ -1,12 +1,11 @@
 <template>
-  <div class="hash-router">
-      
+  <div class="hash-router">     
     <my-router-view></my-router-view>
     <div class="footer">
         <my-router-link to="home">首页</my-router-link>
         <my-router-link to='classify'>分类</my-router-link>
         <my-router-link to='cart'>购物车</my-router-link>
-        <my-router-link to='my'>我的</my-router-link>
+        <my-router-link :to="{name:'my',params:{userId: 123}}">我的</my-router-link>
     </div>
   </div>
 </template>
