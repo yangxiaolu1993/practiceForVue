@@ -23,7 +23,7 @@ export default {
         {id:'6',title:'hash 路由',desc:'手写路由 ',route:'hashRouter',icon:'6.jpg'},
         {id:'1',title:'Typescript',desc:'TypeScript 在 Vue 中的应用',route:'',icon:'1.jpg'},
         {id:'2',title:'正则表达式',desc:'正则表达式的测试与笔记',route:'rgba',icon:'2.jpg'},
-        {id:'3',title:'嵌套路由',desc:'使用 Canvas 实现一些动画',route:'nest',icon:'3.jpg'},
+        {id:'3',title:'嵌套路由&&单页面多路由',desc:'嵌套路由：<router-view/> 存在层级关系</br> 单页面多路由：<router-view/> 是并排关系，没有层级关系',route:'nest',icon:'3.jpg'},
         {id:'4',title:'位置信息',desc:'使用第三方 JS api 或者 H5 实现位置经纬度的获取',route:'position',icon:'5.jpg'},
         {id:'5',title:'排列组合',desc:'排列组合，数组',route:'algorithm',icon:'6.jpg'},
         
@@ -31,7 +31,6 @@ export default {
     }
   },
   mounted(){
-    // console.log(this.$myMethod())
   },
   methods:{
 

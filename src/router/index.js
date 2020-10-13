@@ -12,6 +12,7 @@ import Position from '@/view/position/index.vue'
 import H5 from '@/view/position/h5.vue'
 import GaoDe from '@/view/position/gaode.vue'
 import HashRouter from '@/view/myRouter/hashRouter.vue'
+import HeaderNav from '@/view/nest/headerNav.vue'
 
 Vue.use(Router)
 
@@ -24,11 +25,16 @@ const router = new Router({
       path: '/nest',
       name: 'nest',
       component: Nest,
+      
       meta:{title:'嵌套路由'},
       children:[{
         path:'first',
         name:'first',
-        component:NestFirst,
+        // component:NestFirst,
+        components: {
+          headernav:HeaderNav,
+          nest:NestFirst
+        },
         children:[{
           path:'second',
           name:'second',

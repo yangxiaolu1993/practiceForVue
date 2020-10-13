@@ -44,7 +44,18 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      parseFlags:{
+        HH: [/\d\d?/, function (d, v) {
+            d.hour = v;
+        }],
+        mm: [/\d\d?/, function (d, v) {
+            d.minute = v;
+        }],
+        ss: [/\d\d?/, function (d, v) {
+            d.second = v;
+        }],
+      }
     }
   },
   mounted(){
@@ -57,8 +68,11 @@ export default {
     this.greed()
     // 实例分析
     // this.liveExam()
+
+    this.parseTime()
   },
   methods:{
+    
     // 分组
     divide(){
       let str = 'spac00sdacsdbfac'
@@ -137,6 +151,31 @@ export default {
 
       console.log('贪婪匹配')
       console.log(str.match(reg1))
+    },
+    
+   
+    parseTime(){
+     const that = this
+      var token = /d{1,4}|M{1,4}|yy(?:yy)?|S{1,3}|Do|ZZ|([HhMsDm])\1?|[aA]|"[^"]*"|'[^']*'/g;
+      let str = '03秒09'
+      let format = 'mm:ss'
+      let dateInfo = {}
+
+  
+      
+      format.replace(token,function($0){
+        var info = that.parseFlags[$0]
+        var index = str.search(info[0])
+        str.replace(info[0], function (result) {
+            console.log(result)
+            info[1](dateInfo, result);
+            str = str.substr(index + result.length);
+            return result;
+        });
+        return $0
+      })
+
+      console.log(dateInfo)
     }
   }
 }
