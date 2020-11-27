@@ -2,7 +2,7 @@
   <div>
     <router-view name="headernav"></router-view>
     <div class="nest">
-        一级路由
+        一级路由11
         <router-view name="nest"></router-view>
     </div>
   </div>

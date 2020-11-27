@@ -2,6 +2,7 @@
   <div id="app">
     <div class="wrapper">
       <router-view />
+      <!-- <router-view name="a"></router-view> -->
     </div>
     
   </div>

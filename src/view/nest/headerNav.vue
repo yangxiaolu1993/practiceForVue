@@ -18,6 +18,11 @@ export default {
   mounted(){
    console.log('222')
   },
+  beforeRouteUpdate(to, from, next){
+    console.log('当前路由更新')
+    console.log(to,from)
+    next()
+  },
   methods:{
   }
 }

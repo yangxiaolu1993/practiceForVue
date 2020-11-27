@@ -1,24 +1,27 @@
 <template>
-  <div class="nest">
-      三级路由
+  <div class="home">
+    123
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'nest',
+  name: 'home',
   data () {
     return {
+      data:[
+           
+        ]
     }
   },
   mounted(){
-   
+
   },
-  methods:{
-  }
+
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/css/nest/nest.scss';
+@import '@/assets/css/algorithm/algorithm.scss';
 </style>
