@@ -7,8 +7,7 @@
     ></nut-searchbar>
 
     <div>
-
-        <yxl-npm></yxl-npm>
+        <Banner>This is @jd Banner</Banner>
     </div>
   </div>
 </template>

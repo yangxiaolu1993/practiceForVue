@@ -8,5 +8,20 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]
+  "plugins": [
+    "transform-vue-jsx", 
+    "transform-runtime",
+    ["@nutui/babel-plugin-separate-import", {
+        "style": "scss"
+    }],
+    [
+        "import",
+        {
+            "libraryName": "yxl-npm",//组件库名称
+            "camel2DashComponentName": false,//关闭驼峰自动转链式
+            "camel2UnderlineComponentName": false//关闭蛇形自动转链式
+        }
+    ]
+
+  ]
 }

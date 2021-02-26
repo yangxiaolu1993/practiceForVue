@@ -17,63 +17,67 @@ import HeaderNav from '@/view/nest/headerNav.vue'
 import Home from '@/view/level/index'
 import Bar from '@/view/level/bar'
 
+
 import NutUI from '@/view/nutui'
+
+import Canvas from '@/view/canvas-dev/index.vue'
 
 Vue.use(Router)
 
 const router = new Router({
   mode:'history',
   routes: [
-    {
-      path: '/',
-      components: {
-        default: Home,
-        a: Bar,
-      }
-    },
+    // {
+    //   path: '/',
+    //   components: {
+    //     default: Home,
+    //     a: Bar,
+    //   }
+    // },
     {path: '/nutui',name: 'NutUI',component: NutUI,meta:{title:'NutUI'}}, // 首页
-    // {path: '/',name: 'Home',component: Home,meta:{title:'首页'}}, // 首页
-    // {path: '/rgba',name: 'rgba',component: Rgba,meta:{title:'正则表达式'}}, // 正则表达式
-    // {
-    //   path: '/nest',
-    //   name: 'nest',
-    //   component: Nest,
+    {path: '/',name: 'Home',component: Home,meta:{title:'首页'}}, // 首页
+    {path: '/rgba',name: 'rgba',component: Rgba,meta:{title:'正则表达式'}}, // 正则表达式
+    {
+      path: '/nest',
+      name: 'nest',
+      component: Nest,
       
-    //   meta:{title:'嵌套路由'},
-    //   children:[{
-    //     path:'first',
-    //     name:'first',
-    //     // component:NestFirst,
-    //     components: {
-    //       headernav:HeaderNav,
-    //       nest:NestFirst
-    //     },
-    //     children:[{
-    //       path:'second',
-    //       name:'second',
-    //       component:NestSecond,
-    //     }]
-    //   }]
-    // },  // 嵌套路由
-    // {path: '/algorithm',name: 'algorithm',component: Algorithm,meta:{title:'排列组合'}},  // canvas
-    // {
-    //   path: '/position',
-    //   name: 'position',
-    //   component: Position,
-    //   meta:{title:'位置信息'},
-    //   children:[{
-    //     path: 'h5',
-    //     name: 'h5',
-    //     component: H5,
-    //     meta:{title:'H5 获取位置信息'}
-    //   },{
-    //     path: 'gaode',
-    //     name: 'gaode',
-    //     component: GaoDe,
-    //     meta:{title:'高德 位置信息'}
-    //   }]
-    // },  // 位置信息
-    // {path: '/hashRouter',name: 'hashRouter',component: HashRouter,meta:{title:'hash 路由'}},  // 手写路由 hash
+      meta:{title:'嵌套路由'},
+      children:[{
+        path:'first',
+        name:'first',
+        // component:NestFirst,
+        components: {
+          headernav:HeaderNav,
+          nest:NestFirst
+        },
+        children:[{
+          path:'second',
+          name:'second',
+          component:NestSecond,
+        }]
+      }]
+    },  // 嵌套路由
+    {path: '/algorithm',name: 'algorithm',component: Algorithm,meta:{title:'排列组合'}},  // 当前地址定位
+    {
+      path: '/position',
+      name: 'position',
+      component: Position,
+      meta:{title:'位置信息'},
+      children:[{
+        path: 'h5',
+        name: 'h5',
+        component: H5,
+        meta:{title:'H5 获取位置信息'}
+      },{
+        path: 'gaode',
+        name: 'gaode',
+        component: GaoDe,
+        meta:{title:'高德 位置信息'}
+      }]
+    },  // 位置信息
+    {path: '/hashRouter',name: 'hashRouter',component: HashRouter,meta:{title:'hash 路由'}},  // 手写路由 hash
+    {path: '/canvas',name: 'canvas',component: Canvas,meta:{title:'Canvas'}},  // 手写路由 hash
   ]
 })
 
