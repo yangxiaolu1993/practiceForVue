@@ -46,6 +46,30 @@ export default {
 
 
       return pi+1
+    },
+    /**
+     * leetcode 1:两数之和
+     * 哈希表（散列表）
+     */
+    code1(nums,target){
+      let pi = 0
+      let pj = 1
+
+      while(pi < nums.length){
+        if(nums[pi]+nums[pj] == target){
+          return [pi,pj]
+        }
+
+        if(pj < nums.length){
+          pj+=1
+        } else {
+          pi += 1
+          pj = pi +1
+        }
+
+      }
+
+      return []
     }
   }
 
