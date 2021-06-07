@@ -2,11 +2,9 @@
   <div class="home">
     <h2>自定义npm引用</h2>
 
-    <h2>NutUI 引用</h2>
-    <nut-icon 
-      type="top"
-    >
-    </nut-icon>
+    <div>
+      数据结构常用的类型：数组、栈、队列、链表、树、图、堆、散列标
+    </div>
   </div>
 </template>
 
@@ -15,14 +13,41 @@ export default {
   name: 'home',
   data () {
     return {
-      data:[
-           
-        ]
+      arr:[1,2,3,4]
     }
   },
   mounted(){
-
+    let nums = [1,1,2]
+    let len = this.code26(nums)
+    console.log('长度',len)
+    for(let i = 0;i<len;i++){
+      console.log(nums[i])
+    }
   },
+
+  methods:{
+    /**
+     * leetcode 26:删除有序数组中的重复项
+     * 结题思路：双指针
+     */
+    code26(nums){
+      if(nums.length == 0|| nums.length == 1) return nums.length
+
+      let pi = 0
+      let pj = 0
+      while(pj < nums.length){
+        console.log(nums[pi],nums[pj])
+        if(nums[pi] != nums[pj]){
+          pi += 1
+          nums[pi] = nums[pj] 
+        } 
+        pj += 1
+      }
+
+
+      return pi+1
+    }
+  }
 
 }
 </script>
