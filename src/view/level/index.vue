@@ -18,11 +18,13 @@ export default {
   },
   mounted(){
     let nums = [1,1,2]
-    let len = this.code26(nums)
-    console.log('长度',len)
-    for(let i = 0;i<len;i++){
-      console.log(nums[i])
-    }
+    // let len = this.code26(nums)
+    
+    console.log(this.code7(123))
+
+    let num = 123
+    console.log(parseInt(num/10, 10))
+    console.log(~~(num / 10))
   },
 
   methods:{
@@ -70,6 +72,37 @@ export default {
       }
 
       return []
+    },
+    /**
+     * leetcode 7:整数反转
+     * 知识点：按位取反 2个关键操作：
+     * 1、 ~-1 ==> 0 ,在使用 indexOf 查找字符串时，可以通过 if(~str.indexof('a)){}
+     * 2、使用 ~~ 代替 Math.floor() 向下取整 ，~~的运行速度要快很多
+     */
+    code7(x){
+      let rev = 0;
+      while (x !== 0) {
+          const digit = x % 10;
+          
+          x = ~~(x / 10);
+          rev = rev * 10 + digit;
+          if (rev < Math.pow(-2, 31) || rev > Math.pow(2, 31) - 1) {
+              return 0;
+          }
+      }
+      return rev;
+
+    },
+    code7_self(x){
+      let rev = Math.abs(x)
+
+      let f = x<0?1:-1
+
+      let revs = Number(rev.toString().split('').reverse().join(''))
+
+      if(revs>Math.pow(2, 31)-1) return 0
+
+      return (-1)*f*revs
     }
   }
 
