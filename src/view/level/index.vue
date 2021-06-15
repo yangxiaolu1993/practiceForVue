@@ -28,6 +28,10 @@ export default {
 
     let arr = [0,2,3,4,6,4,3,2]
     console.log(this.code852(arr))
+
+    // code 13
+    console.log('==== code 13 =====')
+    console.log(this.code13('MCMXCIV'))
   },
 
   methods:{
@@ -126,7 +130,6 @@ export default {
 
       while(left <= right ){
           let mid = ~~((left + right)/2)
-          console.log('中间值'+mid)
           if(arr[mid] > arr[mid + 1]){
               tag = mid
               right = mid - 1
@@ -141,9 +144,36 @@ export default {
     /**
      * leetcode 13:罗马数字转整数
      * 知识点 
+     * 例子 输入"MCMXCIV"=>1994  解释 M = 1000, CM = 900, XC = 90, IV = 4.
      */
-    code13(arr){
-      
+    code13(s){
+        let sum = []
+        let inter = 1
+        let value = {
+          'I':1,
+          'V':5,
+          'X':10,
+          'L':50,
+          'C':100,
+          "D":500,
+          "M":1000
+        }
+
+        let copy = s.split('')
+
+        for(let i=0;i<copy.length;i+=inter){
+          let a = `${copy[i]}${copy[i+1]}`
+          
+          if(a == 'IV' || a == 'IX' || a == 'XL' || a == 'CD' || a == 'CM' || a == 'XC'){
+            inter = 2
+            sum.push(value[copy[i+1]] - value[copy[i]])
+          } else {
+            inter = 1
+            sum.push(value[copy[i]])
+          }
+          
+        }
+        return sum.reduce((prev,curr) => prev+curr)
     },
   }
 
