@@ -31,7 +31,7 @@ export default {
 
     // code 13
     console.log('==== code 13 =====')
-    console.log(this.code13('MCMXCIV'))
+    console.log(this.code13('III'))
   },
 
   methods:{
