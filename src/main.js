@@ -4,18 +4,29 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import myRouter from './router/index'
+Vue.config.productionTip = false
+
 
 import NutUI from '@nutui/nutui';
 import '@nutui/nutui/dist/nutui.css';
-import Main from 'yxl-npm'
-
-Vue.use(Main)
-
 NutUI.install(Vue);
 
-Vue.config.productionTip = false
+
+
 
 import "./util/rem"
+
+// import YXL from  "yxl-npm";
+// console.log(YXL)
+// YXL.install(Vue)
+
+
+import { textA , textB } from  "yxl-npm";
+
+// console.log(textA)
+// // textA.install(Vue)
+Vue.use(textA);
+Vue.use(textB);
 
 new Vue({
   el: '#app',

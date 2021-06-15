@@ -17,10 +17,15 @@ import HeaderNav from '@/view/nest/headerNav.vue'
 import Home from '@/view/level/index'
 import Bar from '@/view/level/bar'
 
+
 import NutUI from '@/view/nutui'
 
+<<<<<<< HEAD
 import LeetCode from '@/view/leetcode/index.vue'
 import Linked from '@/view/leetcode/linkedlist.vue'
+=======
+import Canvas from '@/view/canvas-dev/index.vue'
+>>>>>>> df48e7e29fff0a00dfeae1031836eddeb0498056
 
 Vue.use(Router)
 
