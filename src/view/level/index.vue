@@ -17,14 +17,14 @@ export default {
     }
   },
   mounted(){
-    let nums = [1,1,2]
+    // code 26
+    // let nums = [1,1,2]
     // let len = this.code26(nums)
-    
-    console.log(this.code7(123))
+    // console.log(this.code7(123))
 
-    let num = 123
-    console.log(parseInt(num/10, 10))
-    console.log(~~(num / 10))
+    
+    let num = 123.12
+    console.log(~~num)
   },
 
   methods:{
@@ -103,6 +103,14 @@ export default {
       if(revs>Math.pow(2, 31)-1) return 0
 
       return (-1)*f*revs
+    },
+
+    /**
+     * leetcode 852:山脉数组的峰顶索引
+     * 
+     */
+    code852(){
+      
     }
   }
 
