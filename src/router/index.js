@@ -19,10 +19,13 @@ import Bar from '@/view/level/bar'
 
 import NutUI from '@/view/nutui'
 
+import LeetCode from '@/view/leetcode/index.vue'
+import Linked from '@/view/leetcode/linkedlist.vue'
+
 Vue.use(Router)
 
 const router = new Router({
-  mode:'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -31,14 +34,26 @@ const router = new Router({
         a: Bar,
       }
     },
-    {path: '/nutui',name: 'NutUI',component: NutUI,meta:{title:'NutUI'}}, // 首页
+    { path: '/nutui', name: 'NutUI', component: NutUI, meta: { title: 'NutUI' } }, // 首页
+    {
+      path: '/leetcode',
+      name: 'LeetCode', 
+      component: LeetCode, 
+      children:[{
+        path:'linked',
+        name:'Linked',
+        // component:NestFirst,
+        component:Linked
+      }],
+      meta: { title: 'LeetCode' }
+    },
     // {path: '/',name: 'Home',component: Home,meta:{title:'首页'}}, // 首页
     // {path: '/rgba',name: 'rgba',component: Rgba,meta:{title:'正则表达式'}}, // 正则表达式
     // {
     //   path: '/nest',
     //   name: 'nest',
     //   component: Nest,
-      
+
     //   meta:{title:'嵌套路由'},
     //   children:[{
     //     path:'first',
@@ -77,11 +92,11 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to,from,next)=>{
-  
+router.beforeEach((to, from, next) => {
+
   document.title = to.meta.title
   next()
-  
+
 })
 
 export default router
