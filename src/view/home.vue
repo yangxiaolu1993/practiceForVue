@@ -21,6 +21,7 @@ export default {
     return {
       list:[
         {id:'6',title:'hash 路由',desc:'手写路由 ',route:'hashRouter',icon:'6.jpg'},
+        {id:'7',title:'LeetCode',desc:'LeetCode 刷题记录',route:'LeetCode',icon:'1.jpg'},
         {id:'1',title:'Typescript',desc:'TypeScript 在 Vue 中的应用',route:'',icon:'1.jpg'},
         {id:'2',title:'正则表达式',desc:'正则表达式的测试与笔记',route:'rgba',icon:'2.jpg'},
         {id:'3',title:'嵌套路由&&单页面多路由',desc:'嵌套路由：<router-view/> 存在层级关系</br> 单页面多路由：<router-view/> 是并排关系，没有层级关系',route:'nest',icon:'3.jpg'},

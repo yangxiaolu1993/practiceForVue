@@ -1,7 +1,14 @@
 <template>
   <div class="leetcode">
-    <h3>LeetCode 解题练习</h3>
-    <router-view></router-view>
+
+    <h3 class="title">LeetCode 解题练习</h3>
+
+    <div class="mainList">
+      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
+      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
+      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
+    </div>
+    
   </div>
 </template>
 
@@ -16,47 +23,21 @@ export default {
     }
   },
   mounted(){
-    let res = this.code20('{[]}')
-    // console.log(res)
   },
   methods:{
-      /** 提号 20 */
-    code20(s){
-        // 数组如果是基数的话，直接返回false
-        if(s.length % 2 == 1) return false  
-        let valid = []
-        for(let i=0;i<s.length;i++){
-            const custom = s[i]
-            const prev = valid[valid.length-1]
-            if(custom == '(' || custom=='{' || custom=='['){
-                valid.push(custom)
-            } else if(
-                (custom == ')' && prev == '(') || 
-                (prev == '{' && custom=='}') || 
-                (prev == '[' && custom==']')
-                ){
-                valid.pop()
-            } else {
-                return false
-            }
-        }
-
-        return valid.length == 0
-
-    }
+      
   }
-  
-
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/css/algorithm/algorithm.scss';
-</style>
-
-
-<style lang="scss">
-    .leetcode{
-        padding: 10px;
+.leetcode{
+    padding: 10px;
+    .title{
+      text-align: center;
     }
+    .mainList{
+      margin-top: 10px;
+    }
+}
 </style>
