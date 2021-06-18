@@ -171,8 +171,7 @@ export default {
      * 例子 输入"MCMXCIV"=>1994  解释 M = 1000, CM = 900, XC = 90, IV = 4.
      */
     code13(s){
-        let sum = []
-        let inter = 1
+        let sum = 0
         let value = {
           'I':1,
           'V':5,
@@ -185,19 +184,17 @@ export default {
 
         let copy = s.split('')
 
-        for(let i=0;i<copy.length;i+=inter){
+        for(let i=0;i<copy.length;i++){
           let a = `${copy[i]}${copy[i+1]}`
           
           if(a == 'IV' || a == 'IX' || a == 'XL' || a == 'CD' || a == 'CM' || a == 'XC'){
-            inter = 2
-            sum.push(value[copy[i+1]] - value[copy[i]])
+            sum -= value[copy[i]]
           } else {
-            inter = 1
-            sum.push(value[copy[i]])
+            sum += value[copy[i]]
           }
           
         }
-        return sum.reduce((prev,curr) => prev+curr)
+        return sum
     },
   }
 
