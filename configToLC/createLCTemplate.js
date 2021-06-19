@@ -87,10 +87,6 @@ function createVue() {
 
 function addToPackageJson() {
   return new Promise((resolve, reject) => {
-    // let sort = newCpt.sort;
-    // newCpt.sort = nav[sort - 1].packages.length + 1;
-    // nav[sort - 1].packages.push(newCpt);
-    // config.nav = nav;
     LeetCodeList.push(newCpt);
     const filePath = path.join(__dirname, `./config.js`);
 
