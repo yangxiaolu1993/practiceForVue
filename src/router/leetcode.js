@@ -3,17 +3,18 @@
 /**
  * leetcode 相关路由配置
  */
-import LeetCode from '@/view/leetcode/index.vue'
+import LeetCode from '@/view/leetcode/home.vue'
 import Linked from '@/view/leetcode/linkedlist.vue'
 
-const files = require.context('../view/leetcode', true, /code[0-9]{1,4}\.vue$/);
+const files = require.context('../view/leetcode', true, /index\.vue$/);
 const importAll = context => {
     const map = {}
 
     for (const key of context.keys()) {
         const keyArr = key.split('/')
         keyArr.shift() // 移除.
-        map[keyArr.join('.').replace(/\.vue$/g, '')] = context(key).default
+        // map[keyArr.join('.').replace(/\.vue$/g, '')] = context(key).default
+        map[keyArr[0]] = context(key).default
     }
     return map
 }

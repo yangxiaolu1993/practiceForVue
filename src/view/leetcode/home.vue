@@ -4,22 +4,21 @@
     <h3 class="title">LeetCode 解题练习</h3>
 
     <div class="mainList">
-      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
-      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
-      <nut-cell title="题号 20" desc="描述文字" to="/code20"></nut-cell>
+      <template v-for="(item,index) in list">
+          <nut-cell  :key='index' :title="item.title" :desc="item.desc || '描述文字'" :to="item.route"></nut-cell>
+      </template>
     </div>
     
   </div>
 </template>
 
 <script>
+import LeetCodeList from '../../../configToLC/config'
 export default {
   name: 'LeetCode',
   data () {
     return {
-      data:[
-           
-        ]
+      list:LeetCodeList
     }
   },
   mounted(){

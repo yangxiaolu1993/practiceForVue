@@ -1,23 +1,18 @@
 // 创建模板
-
 const inquirer = require('inquirer');
-
 const path = require('path');
 const fs = require('fs');
-// const config = require('../src/config');
 const demoModel = require('./template');
-// const nav = config.nav;
+const LeetCodeList = require('./config')
 
 
+// {title:'题号 20',desc:'',route:'/code20'},
 var newCpt = {
   version: '1.0.0',
   name: '',
-  type: '',
-  cName: '',
+  title: '',
   desc: '',
-  sort: '',
-  show: true,
-  author: ''
+  route:'',
 };
 function init() {
   inquirer
@@ -25,7 +20,7 @@ function init() {
       {
         type: 'input',
         name: 'name',
-        message: 'LeetCode 题号(遵循格式 code+题号，如 code20)：',
+        message: 'LeetCode 题号(如 20)：',
       },
       {
         type: 'input',
@@ -39,14 +34,16 @@ function init() {
       }
     ])
     .then(function(answers) {
-      // answers.sort = String(sorts.indexOf(answers.sort));
+      
       newCpt = Object.assign(newCpt, answers);
+      newCpt.title = 'code'+answers.name
+      newCpt.route = '/code'+answers.name
       createNew();
     });
 }
 function createIndexJs() {
-  const nameLc = newCpt.name.toLowerCase();
-  const destPath = path.join('src/view/leetcode' + nameLc);
+  const nameLc = newCpt.title.toLowerCase();
+  const destPath = path.join('src/view/leetcode/' + nameLc);
   if (!fs.existsSync(destPath)) {
     fs.mkdirSync(destPath);
   }
@@ -58,7 +55,7 @@ function createIndexJs() {
 
 function createVue() {
   return new Promise((resolve, reject) => {
-    const nameLc = newCpt.name.toLowerCase();
+    const nameLc = newCpt.title.toLowerCase();
     let content = demoModel(nameLc).vue;
     const dirPath = path.join(__dirname, `../src/view/leetcode/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
@@ -67,7 +64,7 @@ function createVue() {
     }
     fs.writeFile(filePath, content, err => {
       if (err) throw err;
-      resolve(`生成${newCpt.name}.vue文件成功`);
+      resolve(`生成${nameLc}.vue文件成功`);
     });
   });
 }
@@ -75,15 +72,14 @@ function createVue() {
 
 function addToPackageJson() {
   return new Promise((resolve, reject) => {
-    let sort = newCpt.sort;
-    newCpt.sort = nav[sort - 1].packages.length + 1;
-    nav[sort - 1].packages.push(newCpt);
-    config.nav = nav;
-    // conf.packages.push(newCpt);
-    const dirPath = path.join(__dirname, `../`);
-    const filePath = path.join(dirPath, `src/config.js`);
+    // let sort = newCpt.sort;
+    // newCpt.sort = nav[sort - 1].packages.length + 1;
+    // nav[sort - 1].packages.push(newCpt);
+    // config.nav = nav;
+    LeetCodeList.push(newCpt);
+    const filePath = path.join(__dirname, `./config.js`);
 
-    var tempfile = 'module.exports = ' + JSON.stringify(config, null, 2) + ';';
+    var tempfile = 'module.exports = ' + JSON.stringify(LeetCodeList, null, 2) + ';';
     fs.writeFile(filePath, tempfile, err => {
       if (err) throw err;
       resolve(`修改config.json文件成功`);
