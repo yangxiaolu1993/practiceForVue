@@ -11,9 +11,33 @@ export default {
       data: [],
     };
   },
-  mounted() {},
+  mounted() {
+    let nums = [1,1,2]
+    let len = this.solve(nums)
+    console.log(len)
+  },
   methods: {
-    
+    /**
+     * leetcode 26:删除有序数组中的重复项
+     * 结题思路：双指针
+     */
+    solve(nums){
+      if(nums.length == 0|| nums.length == 1) return nums.length
+
+      let pi = 0
+      let pj = 0
+      while(pj < nums.length){
+        console.log(nums[pi],nums[pj])
+        if(nums[pi] != nums[pj]){
+          pi += 1
+          nums[pi] = nums[pj] 
+        } 
+        pj += 1
+      }
+
+
+      return pi+1
+    }
   }
 };
 </script>

@@ -6,11 +6,11 @@ const demoModel = require('./template');
 const LeetCodeList = require('./config')
 
 
-// {title:'题号 20',desc:'',route:'/code20'},
 var newCpt = {
   version: '1.0.0',
   name: '',
   title: '',
+  difficulty:'',
   desc: '',
   route:'',
 };
@@ -21,6 +21,19 @@ function init() {
         type: 'input',
         name: 'name',
         message: 'LeetCode 题号(如 20)：',
+      },
+      {
+        type: 'rawlist',
+        name: 'difficulty',
+        message: '请选择题目难度：目前只支持组建模板',
+        choices: ['简单', '中等', '困难'],
+        validate(value) {
+          const pass = value && /^[1-3]$/.test(value);
+          if (pass) {
+            return true;
+          }
+          return '输入有误！请输入选项前编号';
+        }
       },
       {
         type: 'input',
@@ -36,8 +49,10 @@ function init() {
     .then(function(answers) {
       
       newCpt = Object.assign(newCpt, answers);
+
       newCpt.title = 'code'+answers.name
       newCpt.route = '/code'+answers.name
+      
       createNew();
     });
 }
