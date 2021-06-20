@@ -2,7 +2,7 @@ var nameLc = 'test';
 var demoModel = function (nameLc) {
   var temp = {
     vue: `<template>
-    <div class="leetcode-${nameLc}">
+    <div class="leetcode leetcode-${nameLc}">
       <h3>leetcode ${nameLc} </h3>
     </div>
 </template>
@@ -21,7 +21,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import '_scss/leetcode/index.scss';
+</style>
 `
 };
 

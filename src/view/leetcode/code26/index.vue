@@ -1,5 +1,5 @@
 <template>
-    <div class="leetcode-code26">
+    <div class="leetcode leetcode-code26">
       <h3>leetcode code26 </h3>
     </div>
 </template>
@@ -42,4 +42,6 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import '_scss/leetcode/index.scss';
+</style>
