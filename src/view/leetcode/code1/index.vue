@@ -1,7 +1,9 @@
 <template>
-    <div class="leetcode leetcode-code1">
-      <h3>leetcode code1 </h3>
-    </div>
+  <div class="leetcode leetcode-code1">
+    <h3>leetcode code1</h3>
+
+    <div>两数之和</div>
+  </div>
 </template>
 <script>
 export default {
@@ -11,37 +13,57 @@ export default {
       data: [],
     };
   },
-  mounted() {},
+  mounted() {
+    let arr = ["something", "anything", "nothing", "anything"];
+    let index = arr.indexOf("nothing");
+    // console.log(index) //结果是2
+    console.log(this.solve3([3, 3], 6));
+  },
   methods: {
     /**
-     * leetcode 1:两数之和
+     * 方法一：
      * 哈希表（散列表）
      */
-    solve(nums,target){
-      let pi = 0
-      let pj = 1
+    solve(nums, target) {
+      let pi = 0;
+      let pj = 1;
 
-      while(pi < nums.length){
-        if(nums[pi]+nums[pj] == target){
-          return [pi,pj]
+      while (pi < nums.length) {
+        if (nums[pi] + nums[pj] == target) {
+          return [pi, pj];
         }
 
-        if(pj < nums.length){
-          pj+=1
+        if (pj < nums.length) {
+          pj += 1;
         } else {
-          pi += 1
-          pj = pi +1
+          pi += 1;
+          pj = pi + 1;
         }
-
       }
 
-      return []
+      return [];
     },
-    
-  }
+
+    /**
+     * 方法二：利用 Map （字典）的数据结构查找
+     */
+
+    solve2(nums, target) {
+      let map = new Map();
+      for (let i = 0; i < nums.length; i++) {
+        let n = nums[i];
+        let n2 = target - n;
+        if (map.has(n2)) {
+          return [map.get(n2), i];
+        } else {
+          map.set(n, i);
+        }
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import '_scss/leetcode/index.scss';
+@import "_scss/leetcode/index.scss";
 </style>
