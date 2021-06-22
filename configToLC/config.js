@@ -61,5 +61,14 @@ module.exports = [
     "desc": "无重复字符的最长子串",
     "route": "/code3",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "5",
+    "title": "code5",
+    "difficulty": "中等",
+    "desc": "最长回文子串",
+    "route": "/code5",
+    "author": "yxl"
   }
 ];
