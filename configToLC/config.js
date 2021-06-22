@@ -52,5 +52,14 @@ module.exports = [
     "desc": "山脉数组的峰顶索引",
     "route": "/code852",
     "author": "xly"
+  },
+  {
+    "version": "1.0.0",
+    "name": "3",
+    "title": "code3",
+    "difficulty": "中等",
+    "desc": "无重复字符的最长子串",
+    "route": "/code3",
+    "author": "yxl"
   }
 ];

@@ -25,7 +25,7 @@ function init() {
       {
         type: 'rawlist',
         name: 'difficulty',
-        message: '请选择题目难度：目前只支持组建模板',
+        message: '请选择题目难度：目前只支持三种水平',
         choices: ['简单', '中等', '困难'],
         validate(value) {
           const pass = value && /^[1-3]$/.test(value);
@@ -38,7 +38,7 @@ function init() {
       {
         type: 'input',
         name: 'desc',
-        message: '描述(五十个字以内)：'
+        message: '题目描述(五十个字以内)：'
       },
       {
         type: 'input',
