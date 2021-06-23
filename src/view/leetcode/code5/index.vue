@@ -32,10 +32,10 @@ export default {
   },
   mounted() {
     let s = "mqizdjrfqtmcsruvvlhdgzfrmxgmmbguroxcbhalzggxhzwfznfkrdwsvzhieqvsrbyedqxwmnvovvnesphgddoikfwuujrhxwcrbttfbmlayrlmpromlzwzrkjkzdvdkpqtbzszrngczvgspzpfnvwuifzjdrmwfadophxscxtbavrhfkadhxrmvlmofbzqshqxazzwjextdpuszwgrxirmmlqitjjpijptmqfbggkwaolpbdglmsvlwdummsrdyjhmgrasrblpjsrpkkgknsucsshjuxunqiouzrdwwooxclutkrujpfebjpoodvhknayilcxjrvnykfjhvsikjabsdnvgguoiyldshbsmsrrlwmkfmyjbbsylhrusubcglaemnurpuvlyyknbqelmkkyamrcmjbncpafchacckhymtasylyfjuribqxsekbjkgzrvzjmjkquxfwopsbjudggnfbuyyfizefgxamocxjgkwxidkgursrcsjwwyeiymoafgyjlhtcdkgrikzzlenqgtdukivvdsalepyvehaklejxxmmoycrtsvzugudwirgywvsxqapxyjedbdhvkkvrxxsgifcldkspgdnjnnzfalaslwqfylmzvbxuscatomnmgarkvuccblpoktlpnazyeazhfucmfpalbujhzbykdgcirnqivdwxnnuznrwdjslwdwgpvjehqcbtjljnxsebtqujhmteknbinrloregnphwhnfidfsqdtaexencwzszlpmxjicoduejjomqzsmrgdgvlrfcrbyfutidkryspmoyzlgfltclmhaeebfbunrwqytzhuxghxkfwtjrfyxavcjwnvbaydjnarrhiyjavlmfsstewtxrcifcllnugldnfyswnsewqwnvbgtatccfeqyjgqbnufwttaokibyrldhoniwqsflvlwnjmffoirzmoxqxunkuep";
-    let s1 = "babadcbbd";
+    let s1 = "12324114321";
     let s2 = "bb";
-    // console.log(this.isPalindrome(s1));
-    console.log(this.solve(s2));
+    console.log(this.isPalindromeMid(s1));
+    // console.log(this.solve(s2));
   },
   methods: {
 
@@ -67,6 +67,20 @@ export default {
 
       return maxL;
     },
+
+    /**
+     * 方案二：
+     */
+    solveMid(s){
+      if(s.length == 1) return s
+
+      let n1 = 1
+
+      // let newS = 
+      // let isA = this.isPalindromeMid(s.substring())
+
+
+    },
     /**
      * 判断当前字符串是否是回文字符串
      * 思路一：将字符串反转，判断两个字符串是否一样
@@ -75,6 +89,38 @@ export default {
       var reverseS = s.split("").reverse().join("");
       return s == reverseS;
     },
+
+    /**
+     * 判断当前字符串是否是回文字符串
+     * 思路二：若是回文字符串，会有一个中间位置，两边的内容是一致的，所以获取到字符串的中间位置，向两边循环，若不一致则为false
+     */
+    isPalindromeMid(s){
+      let n1 = 0
+      let n2 = 0
+      let mid = ~~(s.length / 2)
+      
+      if(s.length%2){
+        // 奇数
+        n1 = mid - 1
+        n2 = n1+2
+      }else{
+        // 偶数
+        n1 = mid - 1
+        n2 = mid
+      }
+    
+      for(let i = n1;i<mid;i++){
+        if(s[n1] !== s[n2]){
+          return false
+        }
+
+        n1 -= 1
+        n2 += 1
+      }
+
+      return true
+     
+    }
   },
 };
 </script>
