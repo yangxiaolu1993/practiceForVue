@@ -33,13 +33,13 @@ export default {
       let l = 0;
       for (let i = 0; i < s.length; i++) {
         if (map.has(s[i]) && map.get(s[i]) >= start) {
-          start = map.get(s[i])+1;
+          start = map.get(s[i]) + 1;
         }
         let n = i - start + 1;
         if (n > l) l = n;
         map.set(s[i], i);
       }
-      
+
       return l;
     },
   },
