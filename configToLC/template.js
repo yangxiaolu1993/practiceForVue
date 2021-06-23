@@ -1,9 +1,14 @@
 var nameLc = 'test';
-var demoModel = function (nameLc) {
+var demoModel = function (answer) {
   var temp = {
     vue: `<template>
-    <div class="leetcode leetcode-${nameLc}">
-      <h3>leetcode ${nameLc} </h3>
+    <div class="leetcode leetcode-${answer.title}">
+      <h3 class="leetcode-tip">LC ${answer.name}:${answer.desc}</h3>
+
+      <div class="lc-chunk">
+        <div class="chunk-title">描述</div>
+        <div>填写题目描述</div>
+      </div>
     </div>
 </template>
 <script>

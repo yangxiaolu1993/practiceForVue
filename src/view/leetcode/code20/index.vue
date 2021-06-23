@@ -1,12 +1,12 @@
 
 <template>
   <div class="leetcode leetcode-code20">
-    <h3>leetcode code20</h3>
 
-    <div>
-      给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s
-      ，判断字符串是否有效。 有效字符串需满足：
-      左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。
+    <h3 class="leetcode-tip">LC 20：有效括号</h3>
+
+    <div class="lc-chunk">
+      <div class="chunk-title">描述</div>
+      <div>给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s，判断字符串是否有效。 有效字符串需满足：左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。</div>
     </div>
   </div>
 </template>

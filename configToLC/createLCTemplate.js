@@ -71,7 +71,7 @@ function createIndexJs() {
 function createVue() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.title.toLowerCase();
-    let content = demoModel(nameLc).vue;
+    let content = demoModel(newCpt).vue;
     const dirPath = path.join(__dirname, `../src/view/leetcode/${nameLc}/`);
     const filePath = path.join(dirPath, `index.vue`);
     if (!fs.existsSync(dirPath)) {

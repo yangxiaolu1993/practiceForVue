@@ -1,6 +1,11 @@
 <template>
     <div class="leetcode leetcode-code26">
-      <h3>leetcode code26 </h3>
+      <h3 class="leetcode-tip">LC 26：删除有序数组中的重复项</h3>
+
+      <div class="lc-chunk">
+        <div class="chunk-title">知识点</div>
+        <div>双指针</div>
+      </div>
     </div>
 </template>
 <script>
