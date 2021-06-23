@@ -33,13 +33,14 @@ export default {
   mounted() {
     let s = "mqizdjrfqtmcsruvvlhdgzfrmxgmmbguroxcbhalzggxhzwfznfkrdwsvzhieqvsrbyedqxwmnvovvnesphgddoikfwuujrhxwcrbttfbmlayrlmpromlzwzrkjkzdvdkpqtbzszrngczvgspzpfnvwuifzjdrmwfadophxscxtbavrhfkadhxrmvlmofbzqshqxazzwjextdpuszwgrxirmmlqitjjpijptmqfbggkwaolpbdglmsvlwdummsrdyjhmgrasrblpjsrpkkgknsucsshjuxunqiouzrdwwooxclutkrujpfebjpoodvhknayilcxjrvnykfjhvsikjabsdnvgguoiyldshbsmsrrlwmkfmyjbbsylhrusubcglaemnurpuvlyyknbqelmkkyamrcmjbncpafchacckhymtasylyfjuribqxsekbjkgzrvzjmjkquxfwopsbjudggnfbuyyfizefgxamocxjgkwxidkgursrcsjwwyeiymoafgyjlhtcdkgrikzzlenqgtdukivvdsalepyvehaklejxxmmoycrtsvzugudwirgywvsxqapxyjedbdhvkkvrxxsgifcldkspgdnjnnzfalaslwqfylmzvbxuscatomnmgarkvuccblpoktlpnazyeazhfucmfpalbujhzbykdgcirnqivdwxnnuznrwdjslwdwgpvjehqcbtjljnxsebtqujhmteknbinrloregnphwhnfidfsqdtaexencwzszlpmxjicoduejjomqzsmrgdgvlrfcrbyfutidkryspmoyzlgfltclmhaeebfbunrwqytzhuxghxkfwtjrfyxavcjwnvbaydjnarrhiyjavlmfsstewtxrcifcllnugldnfyswnsewqwnvbgtatccfeqyjgqbnufwttaokibyrldhoniwqsflvlwnjmffoirzmoxqxunkuep";
     let s1 = "babadcbbd";
+    let s2 = "bb";
     // console.log(this.isPalindrome(s1));
-    console.log(this.solve(s));
+    console.log(this.solve(s2));
   },
   methods: {
 
     /**
-     * 方案一：执行没问题，但在 LC 中提交显示“超出时间限制...”
+     * 方案一：执行没问题，但在 LC 中提交显示“超出时间限制...”，添加 && maxL.length < (s.length - 1 - n1)
      */
     solve(s) {
       if (s == "") return s;
@@ -47,7 +48,7 @@ export default {
       let n2 = s.length - 1;
       let maxL = s.substring(n1, 1);
 
-      while (n1 < s.length - 1) {
+      while (n1 < s.length - 1 && maxL.length <= (s.length - 1 - n1)) {
         
         if (s[n2] == s[n1]) {
           let sChild = s.substring(n1, n2 + 1);
