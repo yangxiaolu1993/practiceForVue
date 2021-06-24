@@ -32,9 +32,9 @@ export default {
   },
   mounted() {
     let s = "mqizdjrfqtmcsruvvlhdgzfrmxgmmbguroxcbhalzggxhzwfznfkrdwsvzhieqvsrbyedqxwmnvovvnesphgddoikfwuujrhxwcrbttfbmlayrlmpromlzwzrkjkzdvdkpqtbzszrngczvgspzpfnvwuifzjdrmwfadophxscxtbavrhfkadhxrmvlmofbzqshqxazzwjextdpuszwgrxirmmlqitjjpijptmqfbggkwaolpbdglmsvlwdummsrdyjhmgrasrblpjsrpkkgknsucsshjuxunqiouzrdwwooxclutkrujpfebjpoodvhknayilcxjrvnykfjhvsikjabsdnvgguoiyldshbsmsrrlwmkfmyjbbsylhrusubcglaemnurpuvlyyknbqelmkkyamrcmjbncpafchacckhymtasylyfjuribqxsekbjkgzrvzjmjkquxfwopsbjudggnfbuyyfizefgxamocxjgkwxidkgursrcsjwwyeiymoafgyjlhtcdkgrikzzlenqgtdukivvdsalepyvehaklejxxmmoycrtsvzugudwirgywvsxqapxyjedbdhvkkvrxxsgifcldkspgdnjnnzfalaslwqfylmzvbxuscatomnmgarkvuccblpoktlpnazyeazhfucmfpalbujhzbykdgcirnqivdwxnnuznrwdjslwdwgpvjehqcbtjljnxsebtqujhmteknbinrloregnphwhnfidfsqdtaexencwzszlpmxjicoduejjomqzsmrgdgvlrfcrbyfutidkryspmoyzlgfltclmhaeebfbunrwqytzhuxghxkfwtjrfyxavcjwnvbaydjnarrhiyjavlmfsstewtxrcifcllnugldnfyswnsewqwnvbgtatccfeqyjgqbnufwttaokibyrldhoniwqsflvlwnjmffoirzmoxqxunkuep";
-    let s1 = "12324114321";
+    let s1 = "1232414321";
     let s2 = "bb";
-    console.log(this.isPalindromeMid(s1));
+    console.log(this.solveMid(s1));
     // console.log(this.solve(s2));
   },
   methods: {
@@ -74,12 +74,29 @@ export default {
     solveMid(s){
       if(s.length == 1) return s
 
-      let n1 = 1
+      let result = []
+      for(let i = 1;i<s.length;i++){
+        console.log('循环：',i)
+        // 奇数情况
+        isPalindrome(i,i)
 
-      // let newS = 
-      // let isA = this.isPalindromeMid(s.substring())
+      }
 
+      function isPalindrome(m,n){
+        
+        console.log(s[m], s[n])
+        while( m>=0 && n<s.length && s[m] == s[n]){
+          
+          m -= 1;
+          n += 1
 
+          // console.log(m,n)
+        }
+        console.log(s.substring(result[0],result[1]+1))
+        result = [m,n]
+      }
+
+      return s.substring(result[0],result[1]+1)
     },
     /**
      * 判断当前字符串是否是回文字符串
