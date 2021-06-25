@@ -70,5 +70,14 @@ module.exports = [
     "desc": "最长回文子串",
     "route": "/code5",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "322",
+    "title": "code322",
+    "difficulty": "中等",
+    "desc": "零钱兑换",
+    "route": "/code322",
+    "author": "yxl"
   }
 ];
