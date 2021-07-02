@@ -1,6 +1,6 @@
 <template>
     <div class="leetcode leetcode-code322">
-      <h3 class="leetcode-tip">LC 322:零钱兑换</h3>
+      <h3 class="leetcode-tip">322:零钱兑换</h3>
 
       <div class="lc-chunk">
         <div class="chunk-title">描述</div>

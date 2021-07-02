@@ -1,7 +1,7 @@
 <template>
     <div class="leetcode leetcode-code7">
       
-      <h3 class="leetcode-tip">LC 7：整数反转</h3>
+      <h3 class="leetcode-tip">7：整数反转</h3>
 
       <div class="lc-chunk">
         <div class="chunk-title">描述</div>

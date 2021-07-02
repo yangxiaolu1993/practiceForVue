@@ -1,6 +1,6 @@
 <template>
   <div class="leetcode leetcode-code1">
-    <h3 class="leetcode-tip">LC 1：两数之和</h3>
+    <h3 class="leetcode-tip">1：两数之和</h3>
 
     <div class="lc-chunk">
       <div class="chunk-title">描述</div>

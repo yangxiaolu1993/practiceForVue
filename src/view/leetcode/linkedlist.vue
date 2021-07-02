@@ -3,6 +3,16 @@
 <template>
   <div class="linked">
     <h3>链表</h3>
+
+    <div>
+      字符串有很多比较经典的算法问题，例如：
+        LIS（最长递增子序列）、
+        LCS（最长公共子序列、最长公共子串）、
+        LCP（最长公共前缀）、
+        LPS（最长回文子序列、最长回文子串）、
+        ED（最小编辑距离，也叫 “Levenshtein 距离”）、 
+        KMP（一种字符串匹配的高效算法）。
+    </div>
   </div>
 </template>
 

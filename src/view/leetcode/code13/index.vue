@@ -1,6 +1,6 @@
 <template>
     <div class="leetcode leetcode-code13">
-      <h3 class="leetcode-tip">LC 13：罗马数字转整数</h3>
+      <h3 class="leetcode-tip">13：罗马数字转整数</h3>
 
       <div class="lc-chunk">
         <div class="chunk-title">描述</div>

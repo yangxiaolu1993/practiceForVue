@@ -2,7 +2,7 @@
 <template>
   <div class="leetcode leetcode-code20">
 
-    <h3 class="leetcode-tip">LC 20：有效括号</h3>
+    <h3 class="leetcode-tip">20：有效括号</h3>
 
     <div class="lc-chunk">
       <div class="chunk-title">描述</div>

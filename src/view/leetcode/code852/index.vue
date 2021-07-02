@@ -1,6 +1,6 @@
 <template>
     <div class="leetcode leetcode-code852">
-      <h3 class="leetcode-tip">LC 852：山脉数组的峰顶索引</h3>
+      <h3 class="leetcode-tip">852：山脉数组的峰顶索引</h3>
 
       <div class="lc-chunk">
         <div class="chunk-title">知识点</div>

@@ -1,6 +1,6 @@
 <template>
   <div class="leetcode leetcode-code3">
-    <h3 class="leetcode-tip">LC 3：无重复字符的最长子串</h3>
+    <h3 class="leetcode-tip">3：无重复字符的最长子串</h3>
 
     <div class="lc-chunk">
       <div class="chunk-title">描述</div>
