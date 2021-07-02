@@ -7,15 +7,15 @@
     </div>
 
     <div class="mainList">
+      <nut-cell class="table-header" title='题目' desc='难度'></nut-cell>
       <template v-for="(item, index) in list">
         <nut-cell
           :key="index"
-          :title="item.title"
-          :desc="item.desc || '描述文字'"
           :to="item.route"
         >
-          <div slot="sub-title">
-            <nut-rate
+        <div slot="title">{{item.name}}.{{item.desc || '描述文字'}}</div>
+        <div slot="desc">
+          <nut-rate
               :size="10"
               :spacing="2"
               value="0"
@@ -23,7 +23,7 @@
               :readOnly="true"
             >
             </nut-rate>
-          </div>
+        </div>
         </nut-cell>
       </template>
     </div>
@@ -56,6 +56,10 @@ export default {
   }
   .mainList {
     margin-top: 10px;
+
+    .table-header{
+      font-weight: bold;
+    }
   }
 }
 </style>

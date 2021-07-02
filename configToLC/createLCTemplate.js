@@ -50,8 +50,8 @@ function init() {
       
       newCpt = Object.assign(newCpt, answers);
 
-      newCpt.title = 'code'+answers.name
-      newCpt.route = '/code'+answers.name
+      newCpt.title = answers.name.replace(' ','')
+      newCpt.route = '/'+answers.name.replace(' ','')
       
       createNew();
     });

@@ -1,6 +1,6 @@
 <template>
   <div class="leetcode leetcode-code5">
-    <h3 class="leetcode-tip">LC 5：最长回文子串</h3>
+    <h3 class="leetcode-tip">5：最长回文子串</h3>
 
     <div class="lc-chunk">
       <div class="chunk-title">描述</div>
