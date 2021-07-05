@@ -26,20 +26,159 @@
     </div>
 </template>
 <script>
+
 export default {
   name: "LeetCode",
   data() {
     return {
-      data: [],
+      data: [
+        {
+            name: 'a',
+            children: [
+                { name: 'b', children: [{ name: 'e' }] },
+                { name: 'c', children: [{ name: 'f' }] },
+                { name: 'd', children: [{ name: 'g' }] },
+            ],
+        },
+        {
+            name: 'a2',
+            children: [
+                { name: 'b2', children: [{ name: 'e2' }] },
+                { name: 'c2', children: [{ name: 'f2' }] },
+                { name: 'd2', children: [{ name: 'g2' }] },
+            ],
+        }
+      ],
     };
   },
-  mounted() {},
+  mounted() {
+
+    /**
+     * 深度优先遍历、广度优先遍历 例子
+     */
+    // let res = this.dfsFun(this.data)
+    // console.log(res)
+    // console.log(this.bfsFun(this.data))
+
+    /**
+     * leetcode 实例
+     */ 
+
+   let n = 5, relation = [[0,2],[2,1],[3,4],[2,3],[1,4],[2,0],[0,4]], k = 3;
+
+  //  let n=3,relation = [[0,2],[0,1],[1,2],[2,1],[2,0],[1,0]],k=1
+   let result = this.solveNum(n,relation,k)
+  console.log(result)
+  },
   methods: {
     solve(n, relation, k){
-      for(let i = 0;i<n;i++){
+      const map = new Array(n).fill(0).map(()=>[])
+      
+      relation.forEach(item=>{
+        map[item[0]].push(item[1])
+      })
 
-        
+      let result = []
+      let circle = (keys,children,num)=>{
+        children.push(keys)
+        if(num > k-1){
+          result.push(children)
+        } else {
+          
+          if(map[keys] && map[keys].length>0){
+            map[keys].forEach(key=>{
+              circle(key,JSON.parse(JSON.stringify(children)),num+1)
+            })
+          }
+        }
       }
+      map.forEach((key,index)=>{
+        circle(index,[],0)
+      })
+
+      return result
+    },
+
+    solveNum(n, relation, k){
+      const map = new Array(n).fill(0).map(()=>[])
+      
+      relation.forEach(item=>{
+        map[item[0]].push(item[1])
+      })
+
+      let nums = 0
+      let circle = (keys,num)=>{
+        if(num > k-1){
+          if(keys == n-1) nums += 1
+        } else {
+          
+          if(map[keys] && map[keys].length>0){
+            map[keys].forEach(key=>{
+              circle(key,num+1)
+            })
+          }
+        }
+      }
+      circle(0,0)
+
+      return nums
+    },
+
+
+    numWays(n, relation, k) {
+        let ways = 0;
+        const edges = new Array(n).fill(0).map(() => new Array());
+
+        for (const [src, dst] of relation) {
+            edges[src].push(dst);
+        }
+
+        const dfs = (index, steps) => {
+            if (steps === k) {
+                if (index === n - 1) {
+                    ways++;
+                }
+                return;
+            }
+            const list = edges[index];
+            for (const nextIndex of list) {
+                dfs(nextIndex, steps + 1);
+            }
+        }
+        
+        dfs(0, 0);
+        return ways;
+    },
+
+    /**
+     * 深度优先遍历 DFS（depth-first） 
+     * 广度优先遍历 BFS（breadth-first）
+     */
+  
+    dfsFun(data){
+      const result = [];
+      data.forEach(item => {
+          const map = data => {
+              result.push(data.name);
+              data.children && data.children.forEach(child => map(child));
+          }
+          map(item);
+      })
+      return result.join(',');
+    },
+
+    bfsFun(data){
+      let result = []
+      let queue = data // 创建一个队列
+      while(queue.length > 0){
+        [...queue].forEach(item=>{
+          
+          queue.shift() // 出栈
+          result.push(item.name)
+          item.children && item.children.forEach(child=>queue.push(child))
+        })
+      }
+      return result.join(',')
     }
   }
 };
