@@ -88,5 +88,23 @@ module.exports = [
     "desc": "传递信息",
     "route": "/LCP07",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "LCP01",
+    "title": "LCP01",
+    "difficulty": "简单",
+    "desc": "猜数字",
+    "route": "/LCP01",
+    "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "LCP02",
+    "title": "LCP02",
+    "difficulty": "简单",
+    "desc": "分式化简",
+    "route": "/LCP02",
+    "author": "yxl"
   }
 ];
