@@ -106,5 +106,14 @@ module.exports = [
     "desc": "分式化简",
     "route": "/LCP02",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "LCP03",
+    "title": "LCP03",
+    "difficulty": "中等",
+    "desc": "机器人大冒险",
+    "route": "/LCP03",
+    "author": "yxl"
   }
 ];
