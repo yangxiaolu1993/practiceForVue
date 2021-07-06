@@ -36,27 +36,41 @@ export default {
     // [[10, 5], [1, 6], [6, 10], [3, 0], [0, 3], [0, 10], [6, 2]]
     // 7856
     // 9033
-    
-    let command = "URR", obstacles = [], x = 3, y = 2;
-    
-    console.log(this.solve(command,obstacles, x, y))
+
+    // let command = "URR", obstacles = [], x = 3, y = 2;
+    let command = "RUUR", obstacles = [[10, 5], [1, 6], [6, 10], [3, 0], [0, 3], [0, 10], [6, 2]], x = 7856, y = 9033;
+    console.log(this.solveTem(command,obstacles, x, y))
   },
   methods: {
+    /**
+     * 方案一
+     */
     solve(command, obstacles, x, y){
 
       let cir = 0
       let s = [0,0]
       let nc = [...command]
 
+      let upObs = new Map()
+
+      for(let [x,y] of obstacles){
+        if(upObs.get(x)){
+          upObs.get(x).push(y)
+        }else{
+          upObs.set(x,[y])
+        }
+      }
+
       while(!(cir > nc.length)){
-
         s[nc[cir] == 'U'?1:0] += 1
-     
+        let isDes = []
+        if(upObs.get(s[0])){
+          isDes = upObs.get(s[0]).filter(i=>{
+            return i==s[1]
+          })
+        }
 
-        let isDes = obstacles.filter(item=>{
-          return s.toString() == item.toString()
-        })
-        if(isDes.length){
+        if(isDes.length || s[0] > x || s[1]>y){
           return false
         }else if(s[0]==x &&s[1]==y){
           return true
@@ -64,9 +78,47 @@ export default {
           cir = cir == nc.length-1?0:cir+1
         }
       }
+    },
+    /**
+     * 将方案yi中，使用 Set 方式代替 Map 方式，执行超时
+     */
+    solveSet(command, obstacles, x, y){
+
+      let cir = 0
+      let s = [0,0]
+      let nc = [...command]
+
+      let upObs = new Set()
+      for(let [x,y] of obstacles){
+        upObs.add(`${x}&${y}`)
+      }
+
+      while(!(cir > nc.length)){
+        s[nc[cir] == 'U'?1:0] += 1
+
+        if(upObs.has(`${s[0]}&${s[1]}`) || s[0] > x || s[1]>y){
+          return false
+        }else if(s[0]==x &&s[1]==y){
+          return true
+        }else{
+          cir = cir == nc.length-1?0:cir+1
+        }
+      }
+    },
+
+    /**
+     * 模拟行走路线
+     */
+    solveTem(command, obstacles, x, y){
+      let tem = [[0,0]]
+      let nc = [...command]
+      for(let i=1;i<nc.length+1;i++){
+        if(nc[i-1] == 'U') tem[i] = [ tem[i-1][0],tem[i-1][1]+1 ]
+        if(nc[i-1] == 'R') tem[i] = [ tem[i-1][0]+1,tem[i-1][1] ]
+      }
+
+      console.log(tem)
     }
-
-
   }
 };
 </script>
