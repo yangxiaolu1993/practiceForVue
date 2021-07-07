@@ -38,8 +38,9 @@ export default {
     // 9033
 
     // let command = "URR", obstacles = [], x = 3, y = 2;
-    let command = "RUUR", obstacles = [[10, 5], [1, 6], [6, 10], [3, 0], [0, 3], [0, 10], [6, 2]], x = 7856, y = 9033;
-    console.log(this.solveTem(command,obstacles, x, y))
+    let command = "RUUR", obstacles = [[10, 5], [1, 6], [6, 10], [3, 0], [0, 3], [0, 10], [6, 2]], x = 7859, y = 7856;
+    let result = this.solveTem(command,obstacles, x, y)
+    console.log(result)
   },
   methods: {
     /**
@@ -110,14 +111,35 @@ export default {
      * 模拟行走路线
      */
     solveTem(command, obstacles, x, y){
-      let tem = [[0,0]]
+      // let tem = [[0,0]]
       let nc = [...command]
-      for(let i=1;i<nc.length+1;i++){
-        if(nc[i-1] == 'U') tem[i] = [ tem[i-1][0],tem[i-1][1]+1 ]
-        if(nc[i-1] == 'R') tem[i] = [ tem[i-1][0]+1,tem[i-1][1] ]
+      // for(let i=1;i<nc.length+1;i++){
+      //   if(nc[i-1] == 'U') tem[i] = [ tem[i-1][0],tem[i-1][1]+1 ]
+      //   if(nc[i-1] == 'R') tem[i] = [ tem[i-1][0]+1,tem[i-1][1] ]
+      // }
+
+      let UCount = 0
+      let RCount = 0
+      for(let i=0;i<nc.length;i++){
+        if(nc[i] == 'U') UCount += 1
+        else RCount += 1
       }
 
-      console.log(tem)
+      let cir = ~~(x / UCount)  // command 需要循环的次数
+      let rem = x % UCount  // 多余的
+      
+      // x 移动的位置处，y 可以能移动的值
+      let rneed = RCount * cir + this.strCharNum(command.substring(0,rem),'U')
+
+      let nextR = command.substring(rem).indexOf('R')
+
+
+      console.log(nextR)
+
+    },
+
+    strCharNum(str,char){
+      return [...str].filter(item=>item==char).length
     }
   }
 };
