@@ -111,36 +111,25 @@ export default {
      * 模拟行走路线
      */
     solveTem(command, obstacles, x, y){
-      // let tem = [[0,0]]
-      let nc = [...command]
-      // for(let i=1;i<nc.length+1;i++){
-      //   if(nc[i-1] == 'U') tem[i] = [ tem[i-1][0],tem[i-1][1]+1 ]
-      //   if(nc[i-1] == 'R') tem[i] = [ tem[i-1][0]+1,tem[i-1][1] ]
-      // }
+      var arr = ['0, 0']
+      var x0 = 0, y0 = 0
+      command.split('').forEach(item => arr.push(item === 'R' ? `${++x0}, ${y0}` : `${x0}, ${++y0}`))
 
-      let UCount = 0
-      let RCount = 0
-      for(let i=0;i<nc.length;i++){
-        if(nc[i] == 'U') UCount += 1
-        else RCount += 1
+      var loop = Math.min(Math.floor(x / x0), Math.floor(y / y0))
+
+      if (!(arr.includes(`${x - loop * x0}, ${y - loop * y0}`))) return false
+
+      if (obstacles.length > 0) for (var [a, b] of obstacles) {
+        if (a > x || b > y) continue
+        loop = Math.min(Math.floor(a / x0), Math.floor(b / y0))
+        if (arr.includes(`${a - loop * x0}, ${b - loop * y0}`)) return false
       }
 
-      let cir = ~~(x / UCount)  // command 需要循环的次数
-      let rem = x % UCount  // 多余的
-      
-      // x 移动的位置处，y 可以能移动的值
-      let rneed = RCount * cir + this.strCharNum(command.substring(0,rem),'U')
-
-      let nextR = command.substring(rem).indexOf('R')
-
-
-      console.log(nextR)
+      return true
 
     },
 
-    strCharNum(str,char){
-      return [...str].filter(item=>item==char).length
-    }
+
   }
 };
 </script>
