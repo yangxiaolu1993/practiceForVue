@@ -54,28 +54,28 @@ export default {
         tranBroken.add(`${item[0]}&${item[1]}`)
       })
 
-      let group = []
+      let group = new Set()
       let num = 0
       for(let i=0;i<n;i++){
         
         let j = 0
         while(j<m){
           let current = `${i}&${j}` 
-          console.log(current)
+          console.log(current,group)
           let nextL = j+1<m?`${i}&${j+1}`:null  // 下一个  横向 
           let nextP = i+1<n?`${i+1}&${j}`:null  // 下一个  纵向
 
-          if(tranBroken.has(current)){
+          if(tranBroken.has(current) || group.has(current)){
             ++j
           } else {
-            if(nextL && !tranBroken.has(nextL)){
-              group.push(current)
-              group.push(nextL)
+            if(nextL && !tranBroken.has(nextL) && !group.has(nextL)){
+              group.add(current)
+              group.add(nextL)
               ++num
             } else {
               if(nextP && !tranBroken.has(nextP)){
-                group.push(current)
-                group.push(nextP)
+                group.add(current)
+                group.add(nextP)
                 ++num
               } 
             }
