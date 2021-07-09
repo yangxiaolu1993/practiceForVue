@@ -115,5 +115,14 @@ module.exports = [
     "desc": "机器人大冒险",
     "route": "/LCP03",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "LCP04",
+    "title": "LCP04",
+    "difficulty": "困难",
+    "desc": "覆盖",
+    "route": "/LCP04",
+    "author": "yxl"
   }
 ];

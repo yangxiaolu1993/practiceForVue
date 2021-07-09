@@ -129,7 +129,12 @@ export default {
 
     },
 
-
+    /**
+     * 最小轨迹
+     */
+    minTrack(command, obstacles, x, y){
+      
+    }
   }
 };
 </script>
