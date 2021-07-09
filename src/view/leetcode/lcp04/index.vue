@@ -42,7 +42,8 @@ export default {
       * 0 <= b <= n * m
      */
     // let n = 2, m = 3, broken = [[1, 0], [1, 1]];
-    let n = 3, m = 3, broken = [];
+    let n = 2, m = 3, broken = [[1, 1], [1, 2]];
+
     this.solve(n,m,broken)
   },
   methods: {
