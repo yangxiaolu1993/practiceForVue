@@ -57,7 +57,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "3",
     "title": "3",
-    "difficulty": "中等",
+    "difficulty": "2",
     "desc": "无重复字符的最长子串",
     "route": "/code3",
     "author": "yxl"
@@ -66,7 +66,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "5",
     "title": "5",
-    "difficulty": "中等",
+    "difficulty": "2",
     "desc": "最长回文子串",
     "route": "/code5",
     "author": "yxl"
@@ -75,7 +75,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "322",
     "title": "322",
-    "difficulty": "中等",
+    "difficulty": "2",
     "desc": "零钱兑换",
     "route": "/code322",
     "author": "yxl"
@@ -84,7 +84,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "LCP 07",
     "title": "LCP07",
-    "difficulty": "简单",
+    "difficulty": "1",
     "desc": "传递信息",
     "route": "/LCP07",
     "author": "yxl"
@@ -93,7 +93,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "LCP01",
     "title": "LCP01",
-    "difficulty": "简单",
+    "difficulty": "1",
     "desc": "猜数字",
     "route": "/LCP01",
     "author": "yxl"
@@ -102,7 +102,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "LCP02",
     "title": "LCP02",
-    "difficulty": "简单",
+    "difficulty": "1",
     "desc": "分式化简",
     "route": "/LCP02",
     "author": "yxl"
@@ -111,7 +111,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "LCP03",
     "title": "LCP03",
-    "difficulty": "中等",
+    "difficulty": "2",
     "desc": "机器人大冒险",
     "route": "/LCP03",
     "author": "yxl"
@@ -120,7 +120,7 @@ module.exports = [
     "version": "1.0.0",
     "name": "LCP04",
     "title": "LCP04",
-    "difficulty": "困难",
+    "difficulty": "3",
     "desc": "覆盖",
     "route": "/LCP04",
     "author": "yxl"

@@ -19,7 +19,7 @@
               :size="10"
               :spacing="2"
               value="0"
-              :total="item.difficulty"
+              :total="Number(item.difficulty)"
               :readOnly="true"
             >
             </nut-rate>
