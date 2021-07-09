@@ -18,6 +18,10 @@
           输出：2 <br/>
           解释：我们最多可以放两块骨牌：[[0, 0], [0, 1]]以及[[0, 2], [1, 2]]。（见下图） <br/>
 
+          输入：n = 3, m = 3, broken = []
+          输出：4
+          解释：下图是其中一种可行的摆放方式
+
         </div>
       </div>
     </div>
@@ -30,9 +34,60 @@ export default {
       data: [],
     };
   },
-  mounted() {},
+  mounted() {
+    /**
+      * 限制
+      * 1 <= n <= 8
+      * 1 <= m <= 8
+      * 0 <= b <= n * m
+     */
+    // let n = 2, m = 3, broken = [[1, 0], [1, 1]];
+    let n = 3, m = 3, broken = [];
+    this.solve(n,m,broken)
+  },
   methods: {
-    
+    solve(n, m, broken){
+      // 将破损数组重新排列
+      let tranBroken = new Set()
+
+      broken.forEach(item=>{
+        tranBroken.add(`${item[0]}&${item[1]}`)
+      })
+
+      let group = []
+      let num = 0
+      for(let i=0;i<n;i++){
+        
+        let j = 0
+        while(j<m){
+          let current = `${i}&${j}` 
+          console.log(current)
+          let nextL = j+1<m?`${i}&${j+1}`:null  // 下一个  横向 
+          let nextP = i+1<n?`${i+1}&${j}`:null  // 下一个  纵向
+
+          if(tranBroken.has(current)){
+            ++j
+          } else {
+            if(nextL && !tranBroken.has(nextL)){
+              group.push(current)
+              group.push(nextL)
+              ++num
+            } else {
+              if(nextP && !tranBroken.has(nextP)){
+                group.push(current)
+                group.push(nextP)
+                ++num
+              } 
+            }
+
+            j += 2
+          }
+        }
+        console.log(i,j)
+      }
+
+      console.log(num)
+    }
   }
 };
 </script>
