@@ -42,7 +42,9 @@ export default {
       * 0 <= b <= n * m
      */
     // let n = 2, m = 3, broken = [[1, 0], [1, 1]];
-    let n = 2, m = 3, broken = [[1, 1], [1, 2]];
+    // let n = 2, m = 3, broken = [[1, 1], [1, 2]];
+
+    let n=8,m=8,broken = [[1, 0], [2, 5], [3, 1], [3, 2], [3, 4], [4, 0], [4, 3], [4, 6], [4, 7], [5, 3], [5, 5], [5, 6], [6, 3], [7, 2], [7, 7]]
 
     this.solve(n,m,broken)
   },
@@ -54,40 +56,47 @@ export default {
       broken.forEach(item=>{
         tranBroken.add(`${item[0]}&${item[1]}`)
       })
+      
+      let  compare = (n,m)=>{
+        let group = new Set()
+        let num = 0
 
-      let group = new Set()
-      let num = 0
-      for(let i=0;i<n;i++){
+         for(let i=0;i<n;i++){
         
-        let j = 0
-        while(j<m){
-          let current = `${i}&${j}` 
-          console.log(current,group)
-          let nextL = j+1<m?`${i}&${j+1}`:null  // 下一个  横向 
-          let nextP = i+1<n?`${i+1}&${j}`:null  // 下一个  纵向
+            let j = 0
+            while(j<m){
+              let current = `${i}&${j}` 
+              // console.log(current,group)
+              let nextL = j+1<m?`${i}&${j+1}`:null  // 下一个  横向 
+              let nextP = i+1<n?`${i+1}&${j}`:null  // 下一个  纵向
 
-          if(tranBroken.has(current) || group.has(current)){
-            ++j
-          } else {
-            if(nextL && !tranBroken.has(nextL) && !group.has(nextL)){
-              group.add(current)
-              group.add(nextL)
-              ++num
-            } else {
-              if(nextP && !tranBroken.has(nextP)){
-                group.add(current)
-                group.add(nextP)
-                ++num
-              } 
+              if(tranBroken.has(current) || group.has(current)){
+                ++j
+              } else {
+                // 优先比较横向
+                if(nextL && !tranBroken.has(nextL) && !group.has(nextL)){
+                  group.add(current)
+                  group.add(nextL)
+                  ++num
+                } else {
+                  if(nextP && !tranBroken.has(nextP)){
+                    group.add(current)
+                    group.add(nextP)
+                    ++num
+                  } 
+                }
+                j += 2
+
+                
+              }
             }
-
-            j += 2
+            console.log(i,j)
           }
-        }
-        console.log(i,j)
+
+          return num
       }
 
-      console.log(num)
+      console.log('最终结果',compare(n,m),compare(m,n))
     }
   }
 };
