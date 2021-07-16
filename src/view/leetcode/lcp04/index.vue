@@ -1,5 +1,6 @@
 <template>
     <div class="leetcode leetcode-LCP04">
+      <div class="demo"></div>
       <h3 class="leetcode-tip">LCP04:覆盖</h3>
 
       <div class="lc-chunk">
@@ -104,4 +105,14 @@ export default {
 
 <style lang="scss">
 @import '_scss/leetcode/index.scss';
+</style>
+<style>
+.demo{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    clip-path:polygon(0px 0px, 50px 0px, 50px 20px,30px 20px,25px 30px,20px 20px,0 20px);
+    border:2px solid orange;
+}
 </style>
