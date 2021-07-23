@@ -28,6 +28,7 @@ function init() {
         message: '请选择题目难度：目前只支持三种水平',
         choices: ['简单', '中等', '困难'],
         validate(value) {
+
           const pass = value && /^[1-3]$/.test(value);
           if (pass) {
             return true;
@@ -49,7 +50,6 @@ function init() {
     .then(function(answers) {
       
       newCpt = Object.assign(newCpt, answers);
-
       newCpt.title = answers.name.replace(' ','')
       newCpt.route = '/'+answers.name.replace(' ','')
       

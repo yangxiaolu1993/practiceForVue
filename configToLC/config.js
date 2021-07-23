@@ -124,5 +124,14 @@ module.exports = [
     "desc": "覆盖",
     "route": "/LCP04",
     "author": "yxl"
+  },
+  {
+    "version": "1.0.0",
+    "name": "104",
+    "title": "104",
+    "difficulty": "1",
+    "desc": "二叉树的最大深度",
+    "route": "/104",
+    "author": "yangxiaolu"
   }
 ];
