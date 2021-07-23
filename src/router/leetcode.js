@@ -5,6 +5,7 @@
  */
 import LeetCode from '@/view/leetcode/home.vue'
 import Linked from '@/view/leetcode/linkedlist.vue'
+import Graph from '@/view/leetcode/graph.vue'
 
 const files = require.context('../view/leetcode', true, /index\.vue$/);
 const importAll = context => {
@@ -43,6 +44,14 @@ const leetCodeRoutes = [
         component: Linked,
         meta: {
             title: 'LeetCode'
+          }
+      },
+      {
+        path: '/graph',
+        name: 'Graph',
+        component: Graph,
+        meta: {
+            title: '图论'
           }
       },
 ]
