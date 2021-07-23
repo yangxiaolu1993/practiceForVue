@@ -24,6 +24,15 @@
           解释：下图是其中一种可行的摆放方式
 
         </div>
+
+        <div class="chunk-title">知识点</div>
+        <div>
+          <ul>
+            <li>图：二分图、染色法</li>
+            <li>匈牙利算法</li>
+          </ul>
+
+        </div>
       </div>
     </div>
 </template>
