@@ -45,6 +45,12 @@ export default {
     };
   },
   mounted() {
+    Array.prototype.remove = function(val) { 
+        var index = this.indexOf(val); 
+        if (index > -1) { 
+        this.splice(index, 1); 
+        } 
+    };
     /**
      * 限制
      * 1 <= n <= 8
@@ -52,30 +58,44 @@ export default {
      * 0 <= b <= n * m
      */
     // let n = 2, m = 3, broken = [[1, 0], [1, 1]];
-    let n = 2, m = 3, broken = [[1, 1], [1, 2]];
+    // let n = 2, m = 3, broken = [[1, 1], [1, 2]];
 
-    // let n = 8,
-    //   m = 8,
-    //   broken = [
-    //     [1, 0],
-    //     [2, 5],
-    //     [3, 1],
-    //     [3, 2],
-    //     [3, 4],
-    //     [4, 0],
-    //     [4, 3],
-    //     [4, 6],
-    //     [4, 7],
-    //     [5, 3],
-    //     [5, 5],
-    //     [5, 6],
-    //     [6, 3],
-    //     [7, 2],
-    //     [7, 7],
-    //   ];
+    let n = 8,
+      m = 8,
+      broken = [
+        [1, 0],
+        [2, 5],
+        [3, 1],
+        [3, 2],
+        [3, 4],
+        [4, 0],
+        [4, 3],
+        [4, 6],
+        [4, 7],
+        [5, 3],
+        [5, 5],
+        [5, 6],
+        [6, 3],
+        [7, 2],
+        [7, 7],
+      ];
 
     // this.solve(n, m, broken);
-    this.bipartiteGraph(n, m, broken)
+    this.bipartiteGraph(8,8, [])
+
+
+    // let A = new Map()
+    // A.set('a1',['b1','b2'])
+    // A.set('a2',['b1','b3'])
+    // A.set('a3',['b3'])
+
+    // let B = new Map()
+    // B.set('b1',['a1','a2'])
+    // B.set('b2',['a1'])
+    // B.set('b3',['a3','a2'])
+    // B.set('b4',[])
+
+    // this.maxMatch(A,B)
   },
   methods: {
     solve(n, m, broken) {
@@ -137,14 +157,13 @@ export default {
       broken.forEach((item) => {
         tranBroken.add(`${item[0]}&${item[1]}`);
       });
-      console.log(tranBroken)
+      // console.log(tranBroken)
 
       // 通过循环将数组拆分成 A，B两个集合
       let A = new Map(); // i+j == 偶数
       let B = new Map(); // i+j == 奇数
       for (let i = 0; i < n; i++) {
         for (let j = 0; j < m; j++) {
-          // console.log(`${i}&${j}`)
           if(tranBroken.has(`${i}&${j}`)) continue;     
 
           if ((i + j) % 2 == 0 ) {
@@ -153,60 +172,93 @@ export default {
             if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
             
               A.get(`${i}&${j}`).push(`${i+1}&${j}`)
-              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+              // B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
             }
 
             if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
               A.get(`${i}&${j}`).push(`${i}&${j+1}`)
-              B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+              // B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+            }
+
+            if(!tranBroken.has(`${i-1}&${j}`) && i>0){
+            
+              A.get(`${i}&${j}`).push(`${i-1}&${j}`)
+              // B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
+            }
+
+            if(!tranBroken.has(`${i}&${j-1}`) && j>0){
+              A.get(`${i}&${j}`).push(`${i}&${j-1}`)
+              // B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
             }
           } 
 
         }
       }
-
-
       console.log(A)
-      console.log(B)
 
-      // 使用’匈牙利‘算法计算出最大匹配
-      let max = 0
-      let matchList = new Map()
-      let matchB = new Map()
+      this.maxMatch(A)
+      
+    },
 
-      for(let [key, value] of A){
-        console.log(key,value)
+    /**
+     * 查看 a 的匹配项 b，b是否被占用
+     * 未占用：a 找到匹配项 b
+     * 占用：找到占用 b 的匹配项 c，查看 c 是否有除 b 以外的其他可用匹配项 e
+     * 
+     * 未占用：将 c 的匹配项改为 e
+     * 占用：继续寻找
+     * 
+     * 直到 找到未占用项
+     */
 
+    maxMatch(A){
+      let num = 0
+      let noUse = new Map() // B 集合被占用项
+      let matchList = new Map() // 已经匹配项
+
+      let matchFun = (key,value,path)=>{
+        
         let isMatch = false
-        let toMatch = '' // 想要匹配的 key
-        for(let i=0;i<value.length;i++){ 
-          console.log(value[i],!matchB.get(value[i]) && !isMatch)
-          if(!matchB.get(value[i]) && !isMatch){
+        for(let i=0;i<value.length;i++){
+          if(!noUse.get(value[i])){
+
+            // 查询到有未占用项，停止循环，找到匹配项
             matchList.set(key,value[i])
-            matchB.set(value[i],key)
+            noUse.set(value[i],key)
+
+            let keys = [...path.keys()]
+            for(let j=path.size;j>0;j--){
+          
+              matchList.set(keys[j-1],path.get(keys[j-1]))
+              noUse.set(path.get(keys[j-1]),keys[j-1])
+            }
 
             isMatch = true
+            break
           } 
-         
         }
+        
+        // 未查询到未占用项
+        if(!isMatch){
+          if(path.get(key)) return false
 
-        if(!isMatch ){
           
-          for(let i=0;i<value.length;i++){
-            let prev = matchB.get(value[i])
-            
-            let cur = A.get(prev)
-
-            for(let j=0;j<cur.length;j++){
-              
-            }
-          }
+          path.set(key,value[0])
+          let keyn = noUse.get(value[0])
+          let valuen = A.get(keyn)
+          valuen.remove(value[0])
+          valuen.length>0 && matchFun(keyn,valuen,path)
         }
-
       }
 
-      console.log('matchList:',matchList)
-    },
+      
+      for(let [key,value] of A){
+        let p = new Map()
+        value.length>0&&matchFun(key,value,p)
+
+      }
+      console.log(matchList)
+    }
   },
 };
 </script>
