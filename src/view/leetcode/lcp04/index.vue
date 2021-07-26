@@ -122,33 +122,69 @@ export default {
         for (let j = 0; j < m; j++) {
           if(tranBroken.has(`${i}&${j}`)) continue;     
 
+          // if ((i + j) % 2 == 0 ) {
+          //   A.set(`${i}&${j}`,[])
+
+          //   if(!tranBroken.has(`${i-1}&${j}`) && i>0){
+          //     A.get(`${i}&${j}`).push(`${i-1}&${j}`)
+          //     B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
+          //   }
+
+          //   if(!tranBroken.has(`${i}&${j-1}`) && j>0){
+          //     A.get(`${i}&${j}`).push(`${i}&${j-1}`)
+          //     B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
+          //   }
+          //   if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+          //     A.get(`${i}&${j}`).push(`${i+1}&${j}`)
+          //     B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+          //   }
+
+          //   if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
+          //     A.get(`${i}&${j}`).push(`${i}&${j+1}`)
+          //     B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+          //   }
+
+          // } 
+
           if ((i + j) % 2 == 0 ) {
             A.set(`${i}&${j}`,[])
+              if(!tranBroken.has(`${i-1}&${j}`) && i>0){
+                A.get(`${i}&${j}`).push(`${i-1}&${j}`)
+              }
+
+              if(!tranBroken.has(`${i}&${j-1}`) && j>0){
+                A.get(`${i}&${j}`).push(`${i}&${j-1}`)
+              }
+              if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+                A.get(`${i}&${j}`).push(`${i+1}&${j}`)
+              }
+
+              if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
+                A.get(`${i}&${j}`).push(`${i}&${j+1}`)
+              }
+
+          } else {
+            B.set(`${i}&${j}`,[])
 
             if(!tranBroken.has(`${i-1}&${j}`) && i>0){
-              A.get(`${i}&${j}`).push(`${i-1}&${j}`)
-              B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
+              B.get(`${i}&${j}`).push(`${i-1}&${j}`)
             }
 
             if(!tranBroken.has(`${i}&${j-1}`) && j>0){
-              A.get(`${i}&${j}`).push(`${i}&${j-1}`)
-              B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
+              B.get(`${i}&${j}`).push(`${i}&${j-1}`)
             }
             if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
-              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
-              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+              B.get(`${i}&${j}`).push(`${i+1}&${j}`)
             }
 
             if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
-              A.get(`${i}&${j}`).push(`${i}&${j+1}`)
-              B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+              B.get(`${i}&${j}`).push(`${i}&${j+1}`)
             }
-
-          } 
+          }
 
         }
       }
-      console.log('集合',A)
+      console.log('集合',A,B)
 
       return Math.max(this.maxMatch(A),this.maxMatch(B))
       
