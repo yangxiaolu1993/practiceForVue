@@ -1,40 +1,40 @@
 <template>
-    <div class="leetcode leetcode-LCP04">
-      <div class="demo"></div>
-      <h3 class="leetcode-tip">LCP04:覆盖</h3>
+  <div class="leetcode leetcode-LCP04">
+    <!-- <div class="demo"></div> -->
+    <h3 class="leetcode-tip">LCP04:覆盖</h3>
 
-      <div class="lc-chunk">
-        <div class="chunk-title">描述</div>
-        <div>
-          你有一块棋盘，棋盘上有一些格子已经坏掉了。你还有无穷块大小为1 * 2的多米诺骨牌，你想把这些骨牌不重叠地覆盖在完好的格子上，请找出你最多能在棋盘上放多少块骨牌？这些骨牌可以横着或者竖着放。<br/>
+    <div class="lc-chunk">
+      <div class="chunk-title">描述</div>
+      <div>
+        你有一块棋盘，棋盘上有一些格子已经坏掉了。你还有无穷块大小为1 *
+        2的多米诺骨牌，你想把这些骨牌不重叠地覆盖在完好的格子上，请找出你最多能在棋盘上放多少块骨牌？这些骨牌可以横着或者竖着放。<br />
 
-          输入：n, m代表棋盘的大小；broken是一个b * 2的二维数组，其中每个元素代表棋盘上每一个坏掉的格子的位置。<br/>
+        输入：n, m代表棋盘的大小；broken是一个b *
+        2的二维数组，其中每个元素代表棋盘上每一个坏掉的格子的位置。<br />
 
-          输出：一个整数，代表最多能在棋盘上放的骨牌数。<br/>
-        </div>
+        输出：一个整数，代表最多能在棋盘上放的骨牌数。<br />
+      </div>
 
-        <div class="chunk-title">示例</div>
-        <div>
-          输入：n = 2, m = 3, broken = [[1, 0], [1, 1]] <br/>
-          输出：2 <br/>
-          解释：我们最多可以放两块骨牌：[[0, 0], [0, 1]]以及[[0, 2], [1, 2]]。（见下图） <br/>
+      <div class="chunk-title">示例</div>
+      <div>
+        输入：n = 2, m = 3, broken = [[1, 0], [1, 1]] <br />
+        输出：2 <br />
+        解释：我们最多可以放两块骨牌：[[0, 0], [0, 1]]以及[[0, 2], [1,
+        2]]。（见下图） <br />
 
-          输入：n = 3, m = 3, broken = []
-          输出：4
-          解释：下图是其中一种可行的摆放方式
+        输入：n = 3, m = 3, broken = [] 输出：4
+        解释：下图是其中一种可行的摆放方式
+      </div>
 
-        </div>
-
-        <div class="chunk-title">知识点</div>
-        <div>
-          <ul>
-            <li>图：二分图、染色法</li>
-            <li>匈牙利算法</li>
-          </ul>
-
-        </div>
+      <div class="chunk-title">知识点</div>
+      <div>
+        <ul>
+          <li>图：二分图、染色法</li>
+          <li>匈牙利算法</li>
+        </ul>
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
@@ -46,82 +46,189 @@ export default {
   },
   mounted() {
     /**
-      * 限制
-      * 1 <= n <= 8
-      * 1 <= m <= 8
-      * 0 <= b <= n * m
+     * 限制
+     * 1 <= n <= 8
+     * 1 <= m <= 8
+     * 0 <= b <= n * m
      */
     // let n = 2, m = 3, broken = [[1, 0], [1, 1]];
-    // let n = 2, m = 3, broken = [[1, 1], [1, 2]];
+    let n = 2, m = 3, broken = [[1, 1], [1, 2]];
 
-    let n=8,m=8,broken = [[1, 0], [2, 5], [3, 1], [3, 2], [3, 4], [4, 0], [4, 3], [4, 6], [4, 7], [5, 3], [5, 5], [5, 6], [6, 3], [7, 2], [7, 7]]
+    // let n = 8,
+    //   m = 8,
+    //   broken = [
+    //     [1, 0],
+    //     [2, 5],
+    //     [3, 1],
+    //     [3, 2],
+    //     [3, 4],
+    //     [4, 0],
+    //     [4, 3],
+    //     [4, 6],
+    //     [4, 7],
+    //     [5, 3],
+    //     [5, 5],
+    //     [5, 6],
+    //     [6, 3],
+    //     [7, 2],
+    //     [7, 7],
+    //   ];
 
-    this.solve(n,m,broken)
+    // this.solve(n, m, broken);
+    this.bipartiteGraph(n, m, broken)
   },
   methods: {
-    solve(n, m, broken){
+    solve(n, m, broken) {
       // 将破损数组重新排列
-      let tranBroken = new Set()
+      let tranBroken = new Set();
 
-      broken.forEach(item=>{
-        tranBroken.add(`${item[0]}&${item[1]}`)
-      })
-      
-      let  compare = (n,m)=>{
-        let group = new Set()
-        let num = 0
+      broken.forEach((item) => {
+        tranBroken.add(`${item[0]}&${item[1]}`);
+      });
 
-         for(let i=0;i<n;i++){
-        
-            let j = 0
-            while(j<m){
-              let current = `${i}&${j}` 
-              // console.log(current,group)
-              let nextL = j+1<m?`${i}&${j+1}`:null  // 下一个  横向 
-              let nextP = i+1<n?`${i+1}&${j}`:null  // 下一个  纵向
+      let compare = (n, m) => {
+        let group = new Set();
+        let num = 0;
 
-              if(tranBroken.has(current) || group.has(current)){
-                ++j
+        for (let i = 0; i < n; i++) {
+          let j = 0;
+          while (j < m) {
+            let current = `${i}&${j}`;
+            // console.log(current,group)
+            let nextL = j + 1 < m ? `${i}&${j + 1}` : null; // 下一个  横向
+            let nextP = i + 1 < n ? `${i + 1}&${j}` : null; // 下一个  纵向
+
+            if (tranBroken.has(current) || group.has(current)) {
+              ++j;
+            } else {
+              // 优先比较横向
+              if (nextL && !tranBroken.has(nextL) && !group.has(nextL)) {
+                group.add(current);
+                group.add(nextL);
+                ++num;
               } else {
-                // 优先比较横向
-                if(nextL && !tranBroken.has(nextL) && !group.has(nextL)){
-                  group.add(current)
-                  group.add(nextL)
-                  ++num
-                } else {
-                  if(nextP && !tranBroken.has(nextP)){
-                    group.add(current)
-                    group.add(nextP)
-                    ++num
-                  } 
+                if (nextP && !tranBroken.has(nextP)) {
+                  group.add(current);
+                  group.add(nextP);
+                  ++num;
                 }
-                j += 2
-
-                
               }
+              j += 2;
             }
-            console.log(i,j)
           }
+          console.log(i, j);
+        }
 
-          return num
+        return num;
+      };
+
+      console.log("最终结果", compare(n, m), compare(m, n));
+    },
+
+    /**
+     * 将棋盘分解为二分图，将所有的点分为根据 i+j 的奇偶性分为 A/B 集合
+     */
+
+    bipartiteGraph(n, m, broken) {
+
+      // 将破损数组重新排列
+      let tranBroken = new Set();
+
+      broken.forEach((item) => {
+        tranBroken.add(`${item[0]}&${item[1]}`);
+      });
+      console.log(tranBroken)
+
+      // 通过循环将数组拆分成 A，B两个集合
+      let A = new Map(); // i+j == 偶数
+      let B = new Map(); // i+j == 奇数
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < m; j++) {
+          // console.log(`${i}&${j}`)
+          if(tranBroken.has(`${i}&${j}`)) continue;     
+
+          if ((i + j) % 2 == 0 ) {
+            A.set(`${i}&${j}`,[])
+
+            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+            
+              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
+              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+            }
+
+            if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
+              A.get(`${i}&${j}`).push(`${i}&${j+1}`)
+              B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+            }
+          } 
+
+        }
       }
 
-      console.log('最终结果',compare(n,m),compare(m,n))
-    }
-  }
+
+      console.log(A)
+      console.log(B)
+
+      // 使用’匈牙利‘算法计算出最大匹配
+      let max = 0
+      let matchList = new Map()
+      let matchB = new Map()
+
+      for(let [key, value] of A){
+        console.log(key,value)
+
+        let isMatch = false
+        let toMatch = '' // 想要匹配的 key
+        for(let i=0;i<value.length;i++){ 
+          console.log(value[i],!matchB.get(value[i]) && !isMatch)
+          if(!matchB.get(value[i]) && !isMatch){
+            matchList.set(key,value[i])
+            matchB.set(value[i],key)
+
+            isMatch = true
+          } 
+         
+        }
+
+        if(!isMatch ){
+          
+          for(let i=0;i<value.length;i++){
+            let prev = matchB.get(value[i])
+            
+            let cur = A.get(prev)
+
+            for(let j=0;j<cur.length;j++){
+              
+            }
+          }
+        }
+
+      }
+
+      console.log('matchList:',matchList)
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import '_scss/leetcode/index.scss';
+@import "_scss/leetcode/index.scss";
 </style>
 <style>
-.demo{
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background: #000;
-    clip-path:polygon(0px 0px, 50px 0px, 50px 20px,30px 20px,25px 30px,20px 20px,0 20px);
-    border:2px solid orange;
+.demo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #000;
+  clip-path: polygon(
+    0px 0px,
+    50px 0px,
+    50px 20px,
+    30px 20px,
+    25px 30px,
+    20px 20px,
+    0 20px
+  );
+  border: 2px solid orange;
 }
 </style>
