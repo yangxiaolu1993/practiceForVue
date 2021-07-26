@@ -81,9 +81,9 @@ export default {
       ];
 
     // this.solve(n, m, broken);
-    this.bipartiteGraph(8,8, [])
+    let result = this.bipartiteGraph(8,8, broken)
 
-
+  console.log(result)
     
   },
   methods: {
@@ -126,7 +126,6 @@ export default {
             A.set(`${i}&${j}`,[])
 
             if(!tranBroken.has(`${i-1}&${j}`) && i>0){
-            
               A.get(`${i}&${j}`).push(`${i-1}&${j}`)
               B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
             }
@@ -135,16 +134,14 @@ export default {
               A.get(`${i}&${j}`).push(`${i}&${j-1}`)
               B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
             }
+            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
+              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+            }
 
             if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
               A.get(`${i}&${j}`).push(`${i}&${j+1}`)
               B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
-            }
-
-            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
-            
-              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
-              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
             }
 
           } 
@@ -217,7 +214,7 @@ export default {
         value.length>0&&matchFun(key,value,p)
 
       }
-      console.log(matchList)
+      // console.log(matchList)
 
       return matchList.size
     }
