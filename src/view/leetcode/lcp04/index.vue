@@ -146,40 +146,23 @@ export default {
 
           // } 
 
-          if ((i + j) % 2 == 0 ) {
-            A.set(`${i}&${j}`,[])
-              if(!tranBroken.has(`${i-1}&${j}`) && i>0){
-                A.get(`${i}&${j}`).push(`${i-1}&${j}`)
-              }
+          let  gather = (i + j) % 2 == 0 ?A:B
 
-              if(!tranBroken.has(`${i}&${j-1}`) && j>0){
-                A.get(`${i}&${j}`).push(`${i}&${j-1}`)
-              }
-              if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
-                A.get(`${i}&${j}`).push(`${i+1}&${j}`)
-              }
+          gather.set(`${i}&${j}`,[])
 
-              if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
-                A.get(`${i}&${j}`).push(`${i}&${j+1}`)
-              }
+          if(!tranBroken.has(`${i-1}&${j}`) && i>0){
+            gather.get(`${i}&${j}`).push(`${i-1}&${j}`)
+          }
 
-          } else {
-            B.set(`${i}&${j}`,[])
+          if(!tranBroken.has(`${i}&${j-1}`) && j>0){
+            gather.get(`${i}&${j}`).push(`${i}&${j-1}`)
+          }
+          if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+            gather.get(`${i}&${j}`).push(`${i+1}&${j}`)
+          }
 
-            if(!tranBroken.has(`${i-1}&${j}`) && i>0){
-              B.get(`${i}&${j}`).push(`${i-1}&${j}`)
-            }
-
-            if(!tranBroken.has(`${i}&${j-1}`) && j>0){
-              B.get(`${i}&${j}`).push(`${i}&${j-1}`)
-            }
-            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
-              B.get(`${i}&${j}`).push(`${i+1}&${j}`)
-            }
-
-            if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
-              B.get(`${i}&${j}`).push(`${i}&${j+1}`)
-            }
+          if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
+            gather.get(`${i}&${j}`).push(`${i}&${j+1}`)
           }
 
         }
