@@ -84,65 +84,22 @@ export default {
     this.bipartiteGraph(8,8, [])
 
 
-    // let A = new Map()
-    // A.set('a1',['b1','b2'])
-    // A.set('a2',['b1','b3'])
-    // A.set('a3',['b3'])
-
-    // let B = new Map()
-    // B.set('b1',['a1','a2'])
-    // B.set('b2',['a1'])
-    // B.set('b3',['a3','a2'])
-    // B.set('b4',[])
-
-    // this.maxMatch(A,B)
+    
   },
   methods: {
-    solve(n, m, broken) {
-      // 将破损数组重新排列
-      let tranBroken = new Set();
+    init(){
+      // let A = new Map()
+      // A.set('a1',['b1','b2'])
+      // A.set('a2',['b1','b3'])
+      // A.set('a3',['b3'])
 
-      broken.forEach((item) => {
-        tranBroken.add(`${item[0]}&${item[1]}`);
-      });
+      // let B = new Map()
+      // B.set('b1',['a1','a2'])
+      // B.set('b2',['a1'])
+      // B.set('b3',['a3','a2'])
+      // B.set('b4',[])
 
-      let compare = (n, m) => {
-        let group = new Set();
-        let num = 0;
-
-        for (let i = 0; i < n; i++) {
-          let j = 0;
-          while (j < m) {
-            let current = `${i}&${j}`;
-            // console.log(current,group)
-            let nextL = j + 1 < m ? `${i}&${j + 1}` : null; // 下一个  横向
-            let nextP = i + 1 < n ? `${i + 1}&${j}` : null; // 下一个  纵向
-
-            if (tranBroken.has(current) || group.has(current)) {
-              ++j;
-            } else {
-              // 优先比较横向
-              if (nextL && !tranBroken.has(nextL) && !group.has(nextL)) {
-                group.add(current);
-                group.add(nextL);
-                ++num;
-              } else {
-                if (nextP && !tranBroken.has(nextP)) {
-                  group.add(current);
-                  group.add(nextP);
-                  ++num;
-                }
-              }
-              j += 2;
-            }
-          }
-          console.log(i, j);
-        }
-
-        return num;
-      };
-
-      console.log("最终结果", compare(n, m), compare(m, n));
+      // this.maxMatch(A,B)
     },
 
     /**
@@ -157,7 +114,6 @@ export default {
       broken.forEach((item) => {
         tranBroken.add(`${item[0]}&${item[1]}`);
       });
-      // console.log(tranBroken)
 
       // 通过循环将数组拆分成 A，B两个集合
       let A = new Map(); // i+j == 偶数
@@ -169,38 +125,41 @@ export default {
           if ((i + j) % 2 == 0 ) {
             A.set(`${i}&${j}`,[])
 
-            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
-            
-              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
-              // B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
-            }
-
-            if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
-              A.get(`${i}&${j}`).push(`${i}&${j+1}`)
-              // B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
-            }
-
             if(!tranBroken.has(`${i-1}&${j}`) && i>0){
             
               A.get(`${i}&${j}`).push(`${i-1}&${j}`)
-              // B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
+              B.get(`${i-1}&${j}`)?B.get(`${i-1}&${j}`).push(`${i}&${j}`):B.set(`${i-1}&${j}`,[`${i}&${j}`])
             }
 
             if(!tranBroken.has(`${i}&${j-1}`) && j>0){
               A.get(`${i}&${j}`).push(`${i}&${j-1}`)
-              // B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
+              B.get(`${i}&${j-1}`)?B.get(`${i}&${j-1}`).push(`${i}&${j}`):B.set(`${i}&${j-1}`,[`${i}&${j}`])
             }
+
+            if(!tranBroken.has(`${i}&${j+1}`) && j+1<m){
+              A.get(`${i}&${j}`).push(`${i}&${j+1}`)
+              B.get(`${i}&${j+1}`)?B.get(`${i}&${j+1}`).push(`${i}&${j}`):B.set(`${i}&${j+1}`,[`${i}&${j}`])
+            }
+
+            if(!tranBroken.has(`${i+1}&${j}`) && i+1<n){
+            
+              A.get(`${i}&${j}`).push(`${i+1}&${j}`)
+              B.get(`${i+1}&${j}`)?B.get(`${i+1}&${j}`).push(`${i}&${j}`):B.set(`${i+1}&${j}`,[`${i}&${j}`])
+            }
+
           } 
 
         }
       }
-      console.log(A)
+      console.log('集合',A)
 
-      this.maxMatch(A)
+      return Math.max(this.maxMatch(A),this.maxMatch(B))
       
     },
 
     /**
+     * 将 二分图 分为 A/B 两个集合，获取两个集合的最大匹配数
+     *  
      * 查看 a 的匹配项 b，b是否被占用
      * 未占用：a 找到匹配项 b
      * 占用：找到占用 b 的匹配项 c，查看 c 是否有除 b 以外的其他可用匹配项 e
@@ -212,7 +171,6 @@ export default {
      */
 
     maxMatch(A){
-      let num = 0
       let noUse = new Map() // B 集合被占用项
       let matchList = new Map() // 已经匹配项
 
@@ -241,23 +199,27 @@ export default {
         // 未查询到未占用项
         if(!isMatch){
           if(path.get(key)) return false
+          let x = 0
+            path.set(key,value[x])
+            let keyn = noUse.get(value[x])
+            let valuen = A.get(keyn)
+            valuen.remove(value[x])
 
+            valuen.length>0 && matchFun(keyn,valuen,path)
           
-          path.set(key,value[0])
-          let keyn = noUse.get(value[0])
-          let valuen = A.get(keyn)
-          valuen.remove(value[0])
-          valuen.length>0 && matchFun(keyn,valuen,path)
         }
       }
 
       
       for(let [key,value] of A){
         let p = new Map()
+        
         value.length>0&&matchFun(key,value,p)
 
       }
       console.log(matchList)
+
+      return matchList.size
     }
   },
 };
