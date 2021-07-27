@@ -11,6 +11,7 @@ var newCpt = {
   name: '',
   title: '',
   difficulty:'',
+  complete:false,
   desc: '',
   route:'',
 };

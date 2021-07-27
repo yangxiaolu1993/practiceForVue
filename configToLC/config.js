@@ -6,6 +6,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "有效的括号",
     "route": "/code20",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -15,6 +16,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "删除有序数组中的重复项",
     "route": "/code26",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -24,6 +26,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "两数之和",
     "route": "/code1",
+    "complete":true,
     "author": ""
   },
   {
@@ -33,6 +36,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "整数反转",
     "route": "/code7",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -42,6 +46,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "罗马数字转整数",
     "route": "/code13",
+    "complete":true,
     "author": "xly"
   },
   {
@@ -51,6 +56,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "山脉数组的峰顶索引",
     "route": "/code852",
+    "complete":true,
     "author": "xly"
   },
   {
@@ -60,6 +66,7 @@ module.exports = [
     "difficulty": "2",
     "desc": "无重复字符的最长子串",
     "route": "/code3",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -69,6 +76,7 @@ module.exports = [
     "difficulty": "2",
     "desc": "最长回文子串",
     "route": "/code5",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -78,6 +86,7 @@ module.exports = [
     "difficulty": "2",
     "desc": "零钱兑换",
     "route": "/code322",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -87,6 +96,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "传递信息",
     "route": "/LCP07",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -96,6 +106,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "猜数字",
     "route": "/LCP01",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -105,6 +116,7 @@ module.exports = [
     "difficulty": "1",
     "desc": "分式化简",
     "route": "/LCP02",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -114,6 +126,7 @@ module.exports = [
     "difficulty": "2",
     "desc": "机器人大冒险",
     "route": "/LCP03",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -123,6 +136,7 @@ module.exports = [
     "difficulty": "3",
     "desc": "覆盖",
     "route": "/LCP04",
+    "complete":true,
     "author": "yxl"
   },
   {
@@ -131,6 +145,7 @@ module.exports = [
     "title": "104",
     "difficulty": "1",
     "desc": "二叉树的最大深度",
+    "complete":false,
     "route": "/104",
     "author": "yangxiaolu"
   }

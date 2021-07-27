@@ -13,7 +13,7 @@
           :key="index"
           :to="item.route"
         >
-        <div slot="title">{{item.name}}.{{item.desc || '描述文字'}}</div>
+        <div slot="title" :class="{'complete':!item.complete}" >{{item.name}}.{{item.desc || '描述文字'}}</div>
         <div slot="desc">
           <nut-rate
               :size="10"
@@ -59,6 +59,9 @@ export default {
 
     .table-header{
       font-weight: bold;
+    }
+    .complete{
+      color: #f09393;
     }
   }
 }
