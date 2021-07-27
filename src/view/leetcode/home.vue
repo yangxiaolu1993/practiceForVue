@@ -13,7 +13,9 @@
           :key="index"
           :to="item.route"
         >
-        <div slot="title" :class="{'complete':!item.complete}" >{{item.name}}.{{item.desc || '描述文字'}}</div>
+        <div slot="title" :class="{'complete':!item.complete}" >
+          <svg-icon :icon="item.complete?'icon-wancheng':'icon-maichongpulse1'" :styles="{'color':`${item.complete?'#59910a':''}`}"></svg-icon>{{item.name}}.{{item.desc || '描述文字'}}
+        </div>
         <div slot="desc">
           <nut-rate
               :size="10"
