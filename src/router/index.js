@@ -1,23 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Rgba from '@/view/regular'
-import Nest from '@/view/nest'
-import NestFirst from '@/view/nest/first.vue'
-import NestSecond from '@/view/nest/second.vue'
-import Algorithm from '@/view/algorithm/algorithm.vue'
-import Position from '@/view/position/index.vue'
-import H5 from '@/view/position/h5.vue'
-import GaoDe from '@/view/position/gaode.vue'
-import HashRouter from '@/view/myRouter/hashRouter.vue'
-import HeaderNav from '@/view/nest/headerNav.vue'
-
 import Home from '@/view/home'
-import Level from '@/view/level/index.vue'
-import Bar from '@/view/level/bar'
-import Canvas from '@/view/canvas-dev/index.vue'
-
-import leetCodeRoutes from './leetcode'
 
 Vue.use(Router)
 
@@ -30,95 +14,9 @@ let routes = [
     meta: {
       title: '首页'
     }
-  },
-  {
-    path: '/rgba',
-    name: 'rgba',
-    component: Rgba,
-    meta: {
-      title: '正则表达式'
-    }
-  },
-  {
-    path: '/nest',
-    name: 'nest',
-    component: Nest,
-
-    meta: {
-      title: '嵌套路由'
-    },
-    children: [{
-      path: 'first',
-      name: 'first',
-      components: {
-        headernav: HeaderNav,
-        nest: NestFirst
-      },
-      children: [{
-        path: 'second',
-        name: 'second',
-        component: NestSecond,
-      }]
-    }]
-  },
-  {
-    path: '/algorithm',
-    name: 'algorithm',
-    component: Algorithm,
-    meta: {
-      title: '排列组合'
-    }
-  },
-  {
-    path: '/position',
-    name: 'position',
-    component: Position,
-    meta: {
-      title: '位置信息'
-    },
-    children: [{
-      path: 'h5',
-      name: 'h5',
-      component: H5,
-      meta: {
-        title: 'H5 获取位置信息'
-      }
-    }, {
-      path: 'gaode',
-      name: 'gaode',
-      component: GaoDe,
-      meta: {
-        title: '高德 位置信息'
-      }
-    }]
-  },
-  {
-    path: '/hashRouter',
-    name: 'hashRouter',
-    component: HashRouter,
-    meta: {
-      title: '手写 hash 路由'
-    }
-  },
-
-  {
-    path: '/canvas',
-    name:'Canvas',
-    component: Canvas,
-    meta: {
-      title: 'Canvas'
-    }
-  },{
-    path: '/level',
-    name:'Level',
-    components: {
-      default: Level,
-      a: Bar,
-    }
-  },
+  }
 ]
 
-routes = routes.concat(leetCodeRoutes)
 
 const router = new Router({
   mode: 'history',
