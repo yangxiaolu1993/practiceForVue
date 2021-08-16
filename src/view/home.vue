@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import CurrentEnv from '../util/judgeEnv'
 export default {
   name: 'HelloWorld',
   data () {
@@ -25,6 +26,12 @@ export default {
     }
   },
   mounted(){
+    let currentEnv = new CurrentEnv()
+
+    currentEnv.get().then(scene=>{
+      console.log('当前场景:',scene)
+    })
+    //  console.log('当前场景:',scene)
   },
   methods:{
 
