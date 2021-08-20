@@ -1,3 +1,12 @@
+
+/**
+ * 
+ * @param {*} data 
+ * @param {*} params ['next.HotRecommendSku01.name']  / ['next[0]'] / ['兜底文案'] / [`next[${a}]`]
+ * @returns 
+ */
+
+
 function connectData(data, params) {
   if (data) {
     console.log('data 1', data)
@@ -20,12 +29,9 @@ function connectData(data, params) {
       cLinePrice: params && params.cLinePrice ? params.cLinePrice : params && params.cLinePrice === false ? false : ['linePrice'], // 划线价格
       cPreLinePrice: params && params.cPreLinePrice, // 划线价格前的内容
     };
-    // console.log('fieldConfig 1', fieldConfig)
-    // console.log('item', data)
-    // console.log('index', i)
+    
     Object.keys(fieldConfig).forEach(attrName => {
-      // console.log('fieldConfig item', fieldConfig[attrName])
-      // console.log('attrName', attrName)
+      
       // 判断是否有这个属性
       if (fieldConfig[attrName]) {
         // console.log('有这个属性', fieldConfig[attrName])

@@ -91,11 +91,21 @@ export default {
       var obj2 = { class: { teacher: { name: "Li" } } };
       //Li
       console.log(this.find(this.data1, "next.HotRecommendSku01.name"), obj2);
+    
+      // console.log(
+      //   "处理后的数据",
+      //   connectData(this.data1, { cName: ["next.HotRecommendSku01.name"] })
+      // );
 
-      console.log(
-        "处理后的数据",
-        connectData(this.data1, { cName: ["next.HotRecommendSku01.name"] })
-      );
+      const a = "next.HotRecommendSku01"
+
+      let b = new Map()
+      b.set(next.HotRecommendSku01,true)
+      // console.log()
+      for(let key of b.keys()){
+        console.log(key)
+        console.log(this.data1.hasOwnProperty(key))
+      }
     },
 
     find(object, path) {
