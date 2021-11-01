@@ -18,6 +18,7 @@ import Bar from '@/view/level/bar'
 import Canvas from '@/view/canvas-dev/index.vue'
 
 import leetCodeRoutes from './leetcode'
+import Vant from '@/view/vant/index.vue'
 
 Vue.use(Router)
 
@@ -114,6 +115,14 @@ let routes = [
     components: {
       default: Level,
       a: Bar,
+    }
+  },
+  {
+    path: '/vant',
+    name: 'vant',
+    component: Vant,
+    meta: {
+      title: 'Vant 测试'
     }
   },
 ]

@@ -13,6 +13,11 @@ NutUI.install(Vue);
 
 import "./util/rem"
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
+
 
 import { textA , textB } from  "yxl-npm";
 // console.log(textA)
