@@ -36,7 +36,9 @@ const leetCodeRoutes = [
         name: 'LeetCode',
         component: LeetCode,
         meta: {
-          title: 'LeetCode'
+          title: 'LeetCode',
+          level:2,
+          transitionName:''
         }
       },
       {

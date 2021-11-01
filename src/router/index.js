@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vueg  from 'vueg'
 import Router from 'vue-router'
 
 import Rgba from '@/view/regular'
@@ -29,7 +30,9 @@ let routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: '首页'
+      title: '首页',
+      level:1,
+      transitionName:''
     }
   },
   {
@@ -37,7 +40,9 @@ let routes = [
     name: 'rgba',
     component: Rgba,
     meta: {
-      title: '正则表达式'
+      title: '正则表达式',
+      level:2,
+      transitionName:''
     }
   },
   {
@@ -46,7 +51,9 @@ let routes = [
     component: Nest,
 
     meta: {
-      title: '嵌套路由'
+      title: '嵌套路由',
+      level:2,
+      transitionName:''
     },
     children: [{
       path: 'first',
@@ -122,17 +129,25 @@ let routes = [
     name: 'vant',
     component: Vant,
     meta: {
-      title: 'Vant 测试'
+      title: 'Vant 测试',
+      level:2,
+      transitionName:''
     }
   },
 ]
 
 routes = routes.concat(leetCodeRoutes)
 
+
+
 const router = new Router({
   mode: 'history',
   routes
 })
+
+  
+// Vue.use(Vueg,router,Voptions)
+
 
 router.beforeEach((to, from, next) => {
 

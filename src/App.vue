@@ -1,8 +1,13 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <router-view />
-      <!-- <router-view name="a"></router-view> -->
+      <transition :name='transitionName'>
+          <!-- <keep-alive> -->
+            <router-view class="child-view"></router-view>
+          <!-- </keep-alive> -->
+        
+      </transition>
+
     </div>
     
   </div>
@@ -10,7 +15,27 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  
+  data(){
+    return {
+      transitionName: "slide-left"
+    }
+  },
+  watch:{
+    $route: function (to, from) {
+     console.log(to,from)
+    if(to.meta.level > from.meta.level){
+      this.transitionName = 'slide-left';
+    } else {
+      this.transitionName = 'slide-right'
+    }
+    }
+  },
+
+  mounted(){
+
+  }
 }
 </script>
 
@@ -38,5 +63,33 @@ body,html{
   margin:auto;
   box-sizing:border-box;
   /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+
+
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 2s;
+  width: 100%;
+  position: absolute;
+  z-index: 99;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>
