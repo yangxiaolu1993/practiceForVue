@@ -20,6 +20,7 @@ import Canvas from '@/view/canvas-dev/index.vue'
 
 import leetCodeRoutes from './leetcode'
 import Vant from '@/view/vant/index.vue'
+import Cat from '@/view/cat/index.vue'
 
 Vue.use(Router)
 
@@ -130,6 +131,15 @@ let routes = [
     component: Vant,
     meta: {
       title: 'Vant 测试',
+      level:2,
+      transitionName:''
+    }
+  },{
+    path: '/cat',
+    name: 'cat',
+    component: Cat,
+    meta: {
+      title: 'Cat 测试',
       level:2,
       transitionName:''
     }
