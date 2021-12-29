@@ -24,8 +24,10 @@ jobs:
             echo 100 > a.txt
             cat a.txt
             ls
+            git config --global user.email "962468124@qq.com"
+            git config --global user.name "yangxiaolu1993"
             git add .
             git commit -m 'feat: 同步'
             git push
-            
+
         
