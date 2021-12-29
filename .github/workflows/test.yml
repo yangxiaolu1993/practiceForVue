@@ -13,21 +13,11 @@ jobs:
     runs-on: ubuntu-latest   # 一个运行代码的虚拟机
     name: fisrt demo
     steps:
-      - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
-      - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
-        uses: actions/setup-node@v1
+      - uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
-            node-version: 14    # 安装的 node 版本为 14
-      - name: Create a.txt
-        run: | 
-            touch a.txt
-            echo 100 > a.txt
-            cat a.txt
-            ls
-            git config --global user.email "962468124@qq.com"
-            git config --global user.name "yangxiaolu1993"
-            git add .
-            git commit -m 'feat: 同步'
-            git push
+          source-repo: git@github.com:yangxiaolu1993/practiceForVue.git
+          destination-repo: git@github.com:yangxiaolu1993/cipher-vue.git
 
         
