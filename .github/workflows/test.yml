@@ -24,4 +24,8 @@ jobs:
             echo 100 > a.txt
             cat a.txt
             ls
+            git add .
+            git commit -m 'feat: 同步'
+            git push
+            
         
