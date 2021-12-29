@@ -9,7 +9,7 @@ on:
       - 'src/**'
 
 jobs:
-  test:
+  copy:
     runs-on: ubuntu-latest   # 一个运行代码的虚拟机
     name: fisrt demo
     steps:
@@ -23,6 +23,8 @@ jobs:
             git config --global user.email "962468124@qq.com"
             git config --global user.name "yangxiaolu1993"
             git clone https://github.com/yangxiaolu1993/imonitor-vue.git
+            cp build imonitor-vue/build-copy
             ls
-
+            cd imonitor-vue
+            ls
         
