@@ -23,4 +23,5 @@ jobs:
             touch a.txt
             echo 100 > a.txt
             cat a.txt
+            ls
         
