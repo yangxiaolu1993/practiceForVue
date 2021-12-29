@@ -17,12 +17,10 @@ jobs:
       - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
         uses: actions/setup-node@v1
         with:
-            node-version:14    # 安装的 node 版本为 14
-      - uses: wangchucheng/git-repo-sync@v0.1.0
-        with:
-          # Such as https://github.com/wangchucheng/git-repo-sync.git
-          target-url: https://github.com/wangchucheng/git-repo-sync.git
-          # Such as wangchucheng
-          target-username: wangchucheng
-          # You can store token in your project's 'Setting > Secrets' and reference the name here. Such as ${{ secrets.ACCESS_TOKEN }}
-          target-token: ${{ secrets.ACCESS_TOKEN }}
+            node-version: 14    # 安装的 node 版本为 14
+      - name: Create a.txt
+        run: | 
+            touch a.txt
+            echo 100 > a.txt
+            cat a.txt
+        
