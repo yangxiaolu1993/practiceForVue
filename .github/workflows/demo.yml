@@ -25,7 +25,7 @@ jobs:
       #   #   BRANCH: master
       #   #   FOLDER: build
       #   #   SSH_PRIVATE_KEY: ${{ secrets.TOKEN_SECRET }}
-      - run: echo ${{ secrets.HOST }}
+      - run: ${{ secrets.HOST }}
       # - uses: actions/checkout@v2
       #   with:
       #     ssh-key: ${{ secrets.SSH_KEY }}
