@@ -26,8 +26,8 @@ jobs:
             # cp build imonitor-vue/build-copy
             cd imonitor-vue
             ls
+            echo 第一行 > a.txt
+            cat a.txt
             git remote -v
-            git add .
-            git commit -m 'geng'
-            git push
+            
         
