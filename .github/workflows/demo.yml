@@ -20,11 +20,11 @@ jobs:
             node-version: 14    # 安装的 node 版本为 14
       - name: Create a.txt
         run: | 
-            git config --global user.email "962468124@qq.com"
-            git config --global user.name "yangxiaolu1993"
+            # git config --global user.email "962468124@qq.com"
+            # git config --global user.name "yangxiaolu1993"
             git clone https://github.com/yangxiaolu1993/imonitor-vue.git
             cp build imonitor-vue/build-copy
-            ls
+          
             cd imonitor-vue
             ls
         
