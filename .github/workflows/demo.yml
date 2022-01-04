@@ -31,4 +31,5 @@ jobs:
             git remote -v
             cd .git
             ls
+            cat config
         
