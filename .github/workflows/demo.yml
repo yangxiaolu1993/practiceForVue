@@ -33,5 +33,6 @@ jobs:
             git add a.txt
             git commit -m geng
             git status
+            git push
             
         
