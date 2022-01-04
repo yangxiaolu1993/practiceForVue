@@ -27,4 +27,7 @@ jobs:
             cd imonitor-vue
             ls
             git remote -v
+            git add .
+            git commit -m 'geng'
+            git push
         
