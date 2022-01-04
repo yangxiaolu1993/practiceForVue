@@ -18,21 +18,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
             node-version: 16    # 安装的 node 版本为 14
-      - name: Create a.txt
-        run: | 
-            git config --global user.email "962468124@qq.com"
-            git config --global user.name "yangxiaolu1993"
-            git clone https://github.com/yangxiaolu1993/imonitor-vue.git
-            # cp build imonitor-vue/build-copy
-            cd imonitor-vue
-            git pull
-            ls
-            echo 第一行 > a.txt
-            node -v
-            git remote -v
-            git add a.txt
-            git commit -m geng
-            git status
-            git push
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: https://github.com/yangxiaolu1993/imonitor-vue.git
+          BRANCH: master
+          FOLDER: build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
         
