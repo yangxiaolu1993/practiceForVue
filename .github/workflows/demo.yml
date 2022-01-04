@@ -30,8 +30,6 @@ jobs:
             echo 第一行 > a.txt
             node -v
             git remote -v
-            cd .git
-            ls
-            cat config
+            git add a.txt
             
         
