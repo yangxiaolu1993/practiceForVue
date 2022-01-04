@@ -25,23 +25,32 @@ jobs:
       #     BRANCH: master
       #     FOLDER: build
       #     SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-      - uses: actions/checkout@v2
-        with:
-          ssh-key: ${{ secrets.SSH_KEY }}
-          repository: yangxiaolu1993/imonitor-vue # *** REPLACE WITH YOUR OWN ***
-          path: static-files-destination
+      - name : Deploy 
+        uses : JamesIves/github-pages-deploy-action@4.1.7 
+        with :
+          branch : master # action 应该部署到的分支。
+          folder : build #操作应该部署的文件夹。
+          repository-name: yangxiaolu1993/imonitor-vue
+          token: ${{ secrets.TOKEN_SECRET }}
+          target-folder: build
+
+      # - uses: actions/checkout@v2
+      #   with:
+      #     ssh-key: ${{ secrets.SSH_KEY }}
+      #     repository: yangxiaolu1993/imonitor-vue # *** REPLACE WITH YOUR OWN ***
+      #     path: static-files-destination
 
       # Now we will copy/replace all files in the cloned destination folder, and finally push the changes:
-      - run: |
-          # Remove existing files:
-          rm -rf static-files-destination/*
-          # Replace with new files:
-          ls
-          cp -a build static-files-destination/
-          cd static-files-destination
-          git add .
-          # git diff-index: to avoid doing the git commit failing if there are no changes to be commit
-          git diff-index --quiet HEAD || git commit --message 'Static file updates'
-          git push
+      # - run: |
+      #     # Remove existing files:
+      #     rm -rf static-files-destination/*
+      #     # Replace with new files:
+      #     ls
+      #     cp -a build static-files-destination/
+      #     cd static-files-destination
+      #     git add .
+      #     # git diff-index: to avoid doing the git commit failing if there are no changes to be commit
+      #     git diff-index --quiet HEAD || git commit --message 'Static file updates'
+      #     git push
             
         
