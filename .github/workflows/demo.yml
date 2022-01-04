@@ -13,17 +13,36 @@ jobs:
     runs-on: ubuntu-latest   # 一个运行代码的虚拟机
     name: fisrt demo
     steps:
-      - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
-      - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
-        uses: actions/setup-node@v1
+      # - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
+      # - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
+      #   uses: actions/setup-node@v1
+      #   with:
+      #       node-version: 16    # 安装的 node 版本为 14
+      # - name: Deploy
+      #   uses: s0/git-publish-subdir-action@develop
+      #   env:
+      #     REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
+      #     BRANCH: master
+      #     FOLDER: build
+      #     SSH_PRIVATE_KEY: ${{ secrets.YANGXIAOLU }}
+      - uses: actions/checkout@v2
         with:
-            node-version: 16    # 安装的 node 版本为 14
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
-          BRANCH: master
-          FOLDER: build
-          SSH_PRIVATE_KEY: ${{ secrets.publish }}
+          ssh-key: ${{ secrets.YANGXIAOLU }}
+          repository: yangxiaolu1993/imonitor-vue # *** REPLACE WITH YOUR OWN ***
+          path: static-files-destination
+
+      # Now we will copy/replace all files in the cloned destination folder, and finally push the changes:
+      - run: |
+          git config --global user.name yangxiaolu1993
+          git config --global user.email 962468124@qq.com
+          # Remove existing files:
+          rm -rf static-files-destination/*
+          # Replace with new files:
+          cp -a build/* static-files-destination/
+          cd static-files-destination
+          git add .
+          # git diff-index: to avoid doing the git commit failing if there are no changes to be commit
+          git diff-index --quiet HEAD || git commit --message 'Static file updates'
+          git push
             
         
