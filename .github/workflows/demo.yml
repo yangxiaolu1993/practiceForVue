@@ -17,14 +17,15 @@ jobs:
       - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
         uses: actions/setup-node@v1
         with:
-            node-version: 16    # 安装的 node 版本为 14
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
-          BRANCH: master
-          FOLDER: build
-          SSH_PRIVATE_KEY: ${{ secrets.TOKEN_SECRET }}
+            node-version: 14    # 安装的 node 版本为 14
+      # - name: Deploy
+      #   uses: s0/git-publish-subdir-action@develop
+      #   # env:
+      #   #   REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
+      #   #   BRANCH: master
+      #   #   FOLDER: build
+      #   #   SSH_PRIVATE_KEY: ${{ secrets.TOKEN_SECRET }}
+      - run: echo ${{ secrets.HOST }}
       # - uses: actions/checkout@v2
       #   with:
       #     ssh-key: ${{ secrets.SSH_KEY }}
