@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
         uses: actions/setup-node@v1
         with:
-            node-version: 14    # 安装的 node 版本为 14
+            node-version: 16    # 安装的 node 版本为 14
       - name: Create a.txt
         run: | 
             git config --global user.email "962468124@qq.com"
@@ -27,6 +27,7 @@ jobs:
             cd imonitor-vue
             ls
             echo 第一行 > a.txt
+            node -v
             git remote -v
             git add .
             git commit -m 'geng'
