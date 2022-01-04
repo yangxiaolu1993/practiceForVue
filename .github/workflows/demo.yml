@@ -36,7 +36,8 @@ jobs:
           # Remove existing files:
           rm -rf static-files-destination/*
           # Replace with new files:
-          cp -a build/ static-files-destination/
+          ls
+          cp -a build static-files-destination/
           cd static-files-destination
           git add .
           # git diff-index: to avoid doing the git commit failing if there are no changes to be commit
