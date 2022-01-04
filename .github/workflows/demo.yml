@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest   # 一个运行代码的虚拟机
     name: fisrt demo
     steps:
-      # - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
-      # - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
-      #   uses: actions/setup-node@v1
-      #   with:
-      #       node-version: 14    # 安装的 node 版本为 14
+      - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
+      - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
+        uses: actions/setup-node@v1
+        with:
+            node-version: 14    # 安装的 node 版本为 14
       # - name: Deploy
       #   uses: s0/git-publish-subdir-action@develop
       #   env:
@@ -25,7 +25,7 @@ jobs:
       #     BRANCH: master
       #     FOLDER: build
       #     SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-      - uses: actions/checkout@v2
+      - uses: github-action-push-static
         with:
           ssh-key: ${{ secrets.SSH_KEY }}
           repository: yangxiaolu1993/imonitor-vue # *** REPLACE WITH YOUR OWN ***
