@@ -24,6 +24,6 @@ jobs:
           REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
           BRANCH: master
           FOLDER: build
-          SSH_PRIVATE_KEY: ${{ secrets.YANGXIAOLU }}
+          SSH_PRIVATE_KEY: ${{ secrets.publish }}
             
         
