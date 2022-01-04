@@ -25,6 +25,7 @@ jobs:
             git clone https://github.com/yangxiaolu1993/imonitor-vue.git
             # cp build imonitor-vue/build-copy
             cd imonitor-vue
+            git pull
             ls
             echo 第一行 > a.txt
             node -v
@@ -32,5 +33,5 @@ jobs:
             cd .git
             ls
             cat config
-            git pull
+            
         
