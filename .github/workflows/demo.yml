@@ -25,6 +25,5 @@ jobs:
           BRANCH: master
           FOLDER: build
           SSH_PRIVATE_KEY: ${{ secrets.YANGXIAOLU }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
         
