@@ -21,7 +21,7 @@ jobs:
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
-          REPO: https://github.com/yangxiaolu1993/imonitor-vue.git
+          REPO: git@github.com:yangxiaolu1993/imonitor-vue.git
           BRANCH: master
           FOLDER: build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
