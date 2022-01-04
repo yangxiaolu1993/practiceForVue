@@ -31,5 +31,6 @@ jobs:
             node -v
             git remote -v
             git add a.txt
+            git status
             
         
