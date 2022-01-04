@@ -24,7 +24,7 @@ jobs:
             git config --global user.name "yangxiaolu1993"
             git clone https://github.com/yangxiaolu1993/imonitor-vue.git
             cp build imonitor-vue/build-copy
-            ls
+      
             cd imonitor-vue
             ls
         
