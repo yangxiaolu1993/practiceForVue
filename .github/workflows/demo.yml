@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
         uses: actions/setup-node@v1
         with:
-            node-version: 14    # 安装的 node 版本为 14
+            node-version: 14    # 安装的 node 版本为 1
 
       - name : Deploy 
         uses : JamesIves/github-pages-deploy-action@4.1.7 
