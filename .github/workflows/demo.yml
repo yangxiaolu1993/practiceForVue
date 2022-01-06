@@ -3,7 +3,7 @@ name: test
 on:
   push:
     branches:
-      - master # default branch
+      - cicd # default branch
     paths:
       - '.github/workflows/**'
       - 'src/**'
@@ -14,17 +14,12 @@ jobs:
     name: fisrt demo
     steps:
       - uses: actions/checkout@v2  # git pull 将代码拉取到 ubuntu-latest 虚拟机上
-      - name: Use Node.js  # 在 ubuntu-latest 虚拟机上安装 node 环境
-        uses: actions/setup-node@v1
-        with:
-            node-version: 14    # 安装的 node 版本为 14
-      - name: Create a.txt
-        run: | 
-            # git config --global user.email "962468124@qq.com"
-            # git config --global user.name "yangxiaolu1993"
-            git clone https://github.com/yangxiaolu1993/imonitor-vue.git
-            cp build imonitor-vue/build-copy
-          
-            cd imonitor-vue
-            ls
+      - name : Deploy 
+        uses : JamesIves/github-pages-deploy-action@4.1.7 
+        with :
+          branch : master # action 应该部署到的分支。
+          folder : docs #操作应该部署的文件夹。
+          repository-name: yangxiaolu1993/imonitor-vue
+          token: ${{ secrets.TOKEN_SECRET }}
+          target-folder: docs_copy
         
