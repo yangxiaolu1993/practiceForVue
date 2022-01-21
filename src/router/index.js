@@ -20,6 +20,7 @@ import Canvas from '@/view/canvas-dev/index.vue'
 
 import leetCodeRoutes from './leetcode'
 import Vant from '@/view/vant/index.vue'
+import Animation from '@/view/animation/index.vue'
 
 Vue.use(Router)
 
@@ -134,10 +135,20 @@ let routes = [
       transitionName:''
     }
   },
+
+  {
+    path: '/animation',
+    name: 'animation',
+    component: Animation,
+    meta: {
+      title: 'Vant 测试',
+      level:2,
+      transitionName:''
+    }
+  },
 ]
 
 routes = routes.concat(leetCodeRoutes)
-
 
 
 const router = new Router({
