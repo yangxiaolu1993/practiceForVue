@@ -21,6 +21,7 @@ import Canvas from '@/view/canvas-dev/index.vue'
 import leetCodeRoutes from './leetcode'
 import Vant from '@/view/vant/index.vue'
 import Animation from '@/view/animation/index.vue'
+import HandPromise from '@/view/promise/index.vue'
 
 Vue.use(Router)
 
@@ -116,6 +117,13 @@ let routes = [
     component: Canvas,
     meta: {
       title: 'Canvas'
+    }
+  },{
+    path: '/handpromise',
+    name:'HandPromise',
+    component: HandPromise,
+    meta: {
+      title: 'HandPromise'
     }
   },{
     path: '/level',

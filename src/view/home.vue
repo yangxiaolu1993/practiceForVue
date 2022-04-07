@@ -27,7 +27,7 @@ export default {
         {id:'3',title:'嵌套路由&&单页面多路由',desc:'嵌套路由：<router-view/> 存在层级关系</br> 单页面多路由：<router-view/> 是并排关系，没有层级关系',route:'nest',icon:'3.jpg'},
         {id:'4',title:'位置信息',desc:'使用第三方 JS api 或者 H5 实现位置经纬度的获取',route:'position',icon:'5.jpg'},
         {id:'5',title:'排列组合',desc:'排列组合，数组',route:'algorithm',icon:'6.jpg'},
-        
+        {id:'8',title:'Promise',desc:'手写 Promise',route:'HandPromise',icon:'2.jpg'},
       ]
     }
   },
@@ -36,7 +36,6 @@ export default {
   methods:{
 
     jump(obj){
-      
       if(obj.route != ''){
         this.$router.push({
           name:obj.route
